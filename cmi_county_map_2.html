@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Choropleth Map</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <style>
+        .county {
+            stroke: #fff;
+            stroke-width: 0.5px;
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #999;
+            padding: 10px;
+            font-size: 12px;
+            color: #333;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.2s;
+        }
+
+        /* Style for the buttons */
+        .button-container {
+            margin: 10px;
+        }
+        .map-button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .map-button.active {
+            background-color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button container to switch between columns -->
+    <div class="button-container">
+        <button class="map-button active" id="value1-btn">Value 1</button>
+        <button class="map-button" id="value2-btn">Value 2</button>
+        <button class="map-button" id="value3-btn">Value 3</button>
+    </div>
+
+    <svg width="960" height="600"></svg>
+    
+    <!-- Tooltip container -->
+    <div class="tooltip"></div>
+
+    <script>
+        // Width and height of the SVG
+        var width = 960, height = 600;
+
+        // Create an SVG element
+        var svg = d3.select("svg");
+
+        // Define a projection and a path generator
+        var projection = d3.geoAlbersUsa().scale(1280).translate([width / 2, height / 2]);
+        var path = d3.geoPath().projection(projection);
+
+        // Define a maroon color scale for the choropleth
+        var color = d3.scaleQuantize()
+                      .range([
+                          "#fff5f5", // Light maroon (almost white)
+                          "#f7c6c6",
+                          "#ee8e8e",
+                          "#e65858",
+                          "#db2a2a",
+                          "#b12020",
+                          "#8f1717", // Darker maroon
+                          "#731111",
+                          "#4a0b0b"  // Darkest maroon
+                      ]);
+
+        // Tooltip setup
+        var tooltip = d3.select(".tooltip");
+
+        var currentColumn = "value1";  // Default column to be displayed
+
+        // Load the county boundaries GeoJSON (US counties in TopoJSON format)
+        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
+
+            // Load the data from the CSV file
+            d3.csv("schools.csv").then(function(data) {
+
+                // Create a map of the data by FIPS code for easier access
+                var dataByFIPS = {};
+                data.forEach(function(d) {
+                    dataByFIPS[d.FIPS] = {
+                        value1: +d.value1,  // Column 1
+                        value2: +d.value2,  // Column 2
+                        value3: +d.value3,  // Column 3
+                        county: d.County    // County name
+                    };
+                });
+
+                // Draw counties
+                var counties = svg.append("g")
+                   .attr("class", "counties")
+                   .selectAll("path")
+                   .data(topojson.feature(us, us.objects.counties).features)
+                   .enter().append("path")
+                   .attr("class", "county")
+                   .attr("d", path);
+
+                // Add state borders
+                svg.append("path")
+                   .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+                   .attr("class", "states")
+                   .attr("d", path)
+                   .attr("stroke", "#000")
+                   .attr("fill", "none");
+
+                // Function to update the map based on the selected column
+                function updateMap(column) {
+                    currentColumn = column;
+
+                    // Update the color domain based on the selected column's data
+                    color.domain([d3.min(data, d => +d[column]), d3.max(data, d => +d[column])]);
+
+                    // Update county colors and tooltips
+                    counties.attr("fill", function(d) {
+                       var fips = d.id;
+                       var countyData = dataByFIPS[fips];
+                       return countyData ? color(countyData[column]) : "#ccc"; // Gray for missing data
+                    })
+                    .on("mouseover", function(event, d) {
+                        var fips = d.id;
+                        var countyData = dataByFIPS[fips];
+                        if (countyData) {
+                            var value = countyData[column] || "No data";
+                            var county = countyData.county || "Unknown county";
+                            tooltip.transition().duration(200).style("opacity", 1);
+                            tooltip.html("FIPS: " + fips + "<br>County: " + county + "<br>Value: " + value)
+                                   .style("left", (event.pageX + 10) + "px")
+                                   .style("top", (event.pageY - 30) + "px");
+                        }
+                    })
+                    .on("mouseout", function() {
+                        tooltip.transition().duration(200).style("opacity", 0);
+                    });
+                }
+
+                // Initial map update with default column
+                updateMap(currentColumn);
+
+                // Button click handlers to update the map with different columns
+                d3.select("#value1-btn").on("click", function() {
+                    updateMap("value1");
+                    d3.selectAll(".map-button").classed("active", false);
+                    d3.select(this).classed("active", true);
+                });
+
+                d3.select("#value2-btn").on("click", function() {
+                    updateMap("value2");
+                    d3.selectAll(".map-button").classed("active", false);
+                    d3.select(this).classed("active", true);
+                });
+
+                d3.select("#value3-btn").on("click", function() {
+                    updateMap("value3");
+                    d3.selectAll(".map-button").classed("active", false);
+                    d3.select(this).classed("active", true);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
