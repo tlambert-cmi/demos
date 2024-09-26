@@ -89,7 +89,7 @@
         d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
 
             // Load the data from the CSV file
-            d3.csv("schools_2.csv").then(function(data) {
+            d3.csv("schools.csv").then(function(data) {
 
                 // Create a map of the data by FIPS code for easier access
                 var dataByFIPS = {};
@@ -124,7 +124,9 @@
                     currentColumn = column;
 
                     // Update the color domain based on the selected column's data
-                    color.domain([d3.min(data, d => +d[column]), d3.max(data, d => +d[column])]);
+                    var minValue = d3.min(data, d => +d[column]);
+                    var maxValue = d3.max(data, d => +d[column]);
+                    color.domain([minValue, maxValue]);  // Dynamically set domain based on column values
 
                     // Update county colors and tooltips
                     counties.attr("fill", function(d) {
