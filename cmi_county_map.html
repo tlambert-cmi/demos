@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choropleth Map</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <style>
+        .county {
+            stroke: #fff;
+            stroke-width: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <svg width="960" height="600"></svg>
+    
+    <script>
+        // Width and height of the SVG
+        var width = 960, height = 600;
+
+        // Create an SVG element
+        var svg = d3.select("svg");
+
+        // Define a projection and a path generator
+        var projection = d3.geoAlbersUsa().scale(1280).translate([width / 2, height / 2]);
+        var path = d3.geoPath().projection(projection);
+
+        // Define a maroon color scale for the choropleth
+        var color = d3.scaleQuantize()
+                      .range([
+                          "#fff5f5", // Light maroon (almost white)
+                          "#f7c6c6",
+                          "#ee8e8e",
+                          "#e65858",
+                          "#db2a2a",
+                          "#b12020",
+                          "#8f1717", // Darker maroon
+                          "#731111",
+                          "#4a0b0b"  // Darkest maroon
+                      ]);
+
+        // Load the county boundaries GeoJSON (US counties in TopoJSON format)
+        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
+
+            // Load the data from the CSV file
+            d3.csv("schools.csv").then(function(data) {
+
+                // Create a map of the data by FIPS code
+                var dataByFIPS = {};
+                data.forEach(function(d) {
+                    dataByFIPS[d.FIPS] = +d.value; // Ensure value is treated as a number
+                });
+
+                // Update the color domain based on the actual CSV data values
+                color.domain([d3.min(data, d => d.value), d3.max(data, d => d.value)]);
+
+                // Draw counties
+                svg.append("g")
+                   .attr("class", "counties")
+                   .selectAll("path")
+                   .data(topojson.feature(us, us.objects.counties).features)
+                   .enter().append("path")
+                   .attr("class", "county")
+                   .attr("d", path)
+                   .attr("fill", function(d) {
+                       // Assign color based on the FIPS code value
+                       return color(dataByFIPS[d.id]) || "#ccc"; // Gray for missing data
+                   });
+
+                // Add state borders
+                svg.append("path")
+                   .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+                   .attr("class", "states")
+                   .attr("d", path)
+                   .attr("stroke", "#000")
+                   .attr("fill", "none");
+            });
+        });
+    </script>
+</body>
+</html>
