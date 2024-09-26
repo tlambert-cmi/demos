@@ -45,9 +45,9 @@
 <body>
     <!-- Button container to switch between columns -->
     <div class="button-container">
-        <button class="map-button active" id="value1-btn">Confirmed Activities</button>
+        <button class="map-button active" id="value1-btn">Confirmed Cases</button>
         <button class="map-button" id="value2-btn">Partner Teachers</button>
-        <button class="map-button" id="value3-btn">Total Students Reached</button>
+        <button class="map-button" id="value3-btn">Students Reached</button>
     </div>
 
     <svg width="960" height="600"></svg>
@@ -66,24 +66,16 @@
         var projection = d3.geoAlbersUsa().scale(1280).translate([width / 2, height / 2]);
         var path = d3.geoPath().projection(projection);
 
-        // Define a maroon color scale for the choropleth
-        var color = d3.scaleQuantize()
-                      .range([
-                          "#fff5f5", // Light maroon (almost white)
-                          "#f7c6c6",
-                          "#ee8e8e",
-                          "#e65858",
-                          "#db2a2a",
-                          "#b12020",
-                          "#8f1717", // Darker maroon
-                          "#731111",
-                          "#4a0b0b"  // Darkest maroon
-                      ]);
+        // Define different color ranges for each column
+        var maroonColors = ["#fff5f5", "#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111", "#4a0b0b"];
+        var greenColors = ["#f7fcf5", "#e5f5e0", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c", "#00441b"];
+        var purpleColors = ["#fcfbfd", "#efedf5", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#54278f", "#3f007d"];
 
         // Tooltip setup
         var tooltip = d3.select(".tooltip");
 
         var currentColumn = "value1";  // Default column to be displayed
+        var color = d3.scaleQuantize().range(maroonColors); // Default color range (maroon)
 
         // Load the county boundaries GeoJSON (US counties in TopoJSON format)
         d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
@@ -119,14 +111,14 @@
                    .attr("stroke", "#000")
                    .attr("fill", "none");
 
-                // Function to update the map based on the selected column
-                function updateMap(column) {
+                // Function to update the map based on the selected column and color scale
+                function updateMap(column, colorRange) {
                     currentColumn = column;
 
-                    // Update the color domain based on the selected column's data
+                    // Update the color domain and color range
                     var minValue = d3.min(data, d => +d[column]);
                     var maxValue = d3.max(data, d => +d[column]);
-                    color.domain([minValue, maxValue]);  // Dynamically set domain based on column values
+                    color.domain([minValue, maxValue]).range(colorRange);  // Dynamically set domain and color range
 
                     // Update county colors and tooltips
                     counties.attr("fill", function(d) {
@@ -151,24 +143,24 @@
                     });
                 }
 
-                // Initial map update with default column
-                updateMap(currentColumn);
+                // Initial map update with default column and color (Value 1 - Maroon)
+                updateMap(currentColumn, maroonColors);
 
-                // Button click handlers to update the map with different columns
+                // Button click handlers to update the map with different columns and color schemes
                 d3.select("#value1-btn").on("click", function() {
-                    updateMap("value1");
+                    updateMap("value1", maroonColors);
                     d3.selectAll(".map-button").classed("active", false);
                     d3.select(this).classed("active", true);
                 });
 
                 d3.select("#value2-btn").on("click", function() {
-                    updateMap("value2");
+                    updateMap("value2", greenColors);
                     d3.selectAll(".map-button").classed("active", false);
                     d3.select(this).classed("active", true);
                 });
 
                 d3.select("#value3-btn").on("click", function() {
-                    updateMap("value3");
+                    updateMap("value3", purpleColors);
                     d3.selectAll(".map-button").classed("active", false);
                     d3.select(this).classed("active", true);
                 });
