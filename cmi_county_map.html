@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choropleth Map</title>
+    <title>Choropleth Map with Enhanced Tooltip</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <style>
@@ -11,11 +11,28 @@
             stroke: #fff;
             stroke-width: 0.5px;
         }
+
+        /* Tooltip styling */
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #999;
+            padding: 10px;
+            font-size: 12px;
+            color: #333;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.2s;
+        }
     </style>
 </head>
 <body>
     <svg width="960" height="600"></svg>
     
+    <!-- Tooltip container -->
+    <div class="tooltip"></div>
+
     <script>
         // Width and height of the SVG
         var width = 960, height = 600;
@@ -41,16 +58,22 @@
                           "#4a0b0b"  // Darkest maroon
                       ]);
 
+        // Tooltip setup
+        var tooltip = d3.select(".tooltip");
+
         // Load the county boundaries GeoJSON (US counties in TopoJSON format)
         d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
 
             // Load the data from the CSV file
             d3.csv("schools.csv").then(function(data) {
 
-                // Create a map of the data by FIPS code
+                // Create a map of the data by FIPS code for easier access
                 var dataByFIPS = {};
                 data.forEach(function(d) {
-                    dataByFIPS[d.FIPS] = +d.value; // Ensure value is treated as a number
+                    dataByFIPS[d.FIPS] = {
+                        value: +d.value,  // Ensure the value is a number
+                        county: d.County  // Include the county name
+                    };
                 });
 
                 // Update the color domain based on the actual CSV data values
@@ -66,7 +89,24 @@
                    .attr("d", path)
                    .attr("fill", function(d) {
                        // Assign color based on the FIPS code value
-                       return color(dataByFIPS[d.id]) || "#ccc"; // Gray for missing data
+                       return color(dataByFIPS[d.id] ? dataByFIPS[d.id].value : null) || "#ccc"; // Gray for missing data
+                   })
+                   .on("mouseover", function(event, d) {
+                       // Show the tooltip on hover
+                       var fips = d.id;
+                       var countyData = dataByFIPS[fips];
+                       if (countyData) {
+                           var value = countyData.value || "No data";
+                           var county = countyData.county || "Unknown county";
+                           tooltip.transition().duration(200).style("opacity", 1);
+                           tooltip.html("County: " + county + "<br>Confirmed cases (all-time): " + value)
+                                  .style("left", (event.pageX + 10) + "px")
+                                  .style("top", (event.pageY - 30) + "px");
+                       }
+                   })
+                   .on("mouseout", function() {
+                       // Hide the tooltip when not hovering
+                       tooltip.transition().duration(200).style("opacity", 0);
                    });
 
                 // Add state borders

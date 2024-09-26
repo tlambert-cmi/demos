@@ -1,666 +1,666 @@
-FIPS,value
-"01003",1
-"01073",11
-"01077",4
-"01083",2
-"01089",14
-"01097",16
-"01101",4
-"01103",8
-"01115",1
-"01117",5
-"02020",2
-"02090",1
-"04005",20
-"04007",1
-"04011",3
-"04012",1
-"04013",76
-"04019",5
-"04021",3
-"04027",1
-"05119",12
-"05125",34
-"06001",36
-"06005",4
-"06013",9
-"06017",4
-"06019",3
-"06023",11
-"06029",12
-"06037",283
-"06041",20
-"06047",10
-"06053",18
-"06059",42
-"06061",2
-"06065",14
-"06067",19
-"06071",20
-"06073",94
-"06075",24
-"06077",6
-"06079",15
-"06081",29
-"06083",15
-"06085",76
-"06095",1
-"06097",8
-"06099",9
-"06107",1
-"06111",16
-"06113",10
-"08001",9
-"08005",11
-"08013",2
-"08014",2
-"08031",25
-"08035",7
-"08041",16
-"08059",24
-"08065",9
-"08069",54
-"08071",1
-"08077",9
-"08097",1
-"08099",3
-"08123",13
-"09001",11
-"09003",13
-"09005",44
-"09007",1
-"09009",93
-"09110",10
-"09120",7
-"09130",1
-"09140",2
-"09150",2
-"09170",46
-"09180",5
-"09190",212
-"10001",3
-"10003",30
-"10005",1
-"11001",132
-"12009",7
-"12011",5
-"12015",5
-"12019",4
-"12021",3
-"12031",12
-"12035",7
-"12055",36
-"12057",34
-"12069",2
-"12071",2
-"12073",9
-"12083",1
-"12085",3
-"12086",37
-"12087",1
-"12095",33
-"12097",8
-"12099",29
-"12101",11
-"12103",3
-"12105",17
-"12109",1
-"12115",1
-"12117",32
-"12127",3
-"13021",4
-"13045",10
-"13051",8
-"13057",12
-"13067",8
-"13089",5
-"13097",1
-"13113",16
-"13117",2
-"13121",32
-"13127",1
-"13135",8
-"13151",5
-"13153",5
-"13179",1
-"13185",1
-"13209",3
-"13217",1
-"13233",4
-"13245",18
-"13269",6
-"13275",2
-"15001",4
-"15003",72
-"15007",1
-"15009",4
-"16001",46
-"16013",7
-"16015",16
-"16019",7
-"16027",8
-"16041",52
-"16053",3
-"16055",16
-"16073",26
-"16075",2
-"16077",25
-"16083",11
-"16085",1
-"17019",36
-"17027",8
-"17031",258
-"17043",15
-"17089",21
-"17097",9
-"17111",4
-"17135",10
-"17137",4
-"17141",8
-"17143",6
-"17163",5
-"17179",1
-"17189",8
-"17197",6
-"18003",12
-"18007",38
-"18011",15
-"18019",4
-"18027",1
-"18031",6
-"18053",3
-"18057",8
-"18059",3
-"18065",7
-"18085",1
-"18089",66
-"18091",2
-"18097",44
-"18109",4
-"18135",3
-"18141",1
-"18145",9
-"18169",1
-"19013",1
-"19019",4
-"19045",3
-"19049",2
-"19099",1
-"19103",1
-"19113",6
-"19153",6
-"19157",1
-"19167",3
-"20001",1
-"20015",3
-"20037",2
-"20045",10
-"20055",9
-"20077",4
-"20091",4
-"20113",1
-"20173",13
-"20177",21
-"20181",3
-"21015",1
-"21025",6
-"21067",5
-"21089",1
-"21093",1
-"21111",35
-"21113",15
-"21117",5
-"21157",3
-"21193",4
-"21209",2
-"22005",4
-"22019",7
-"22033",24
-"22051",8
-"22055",11
-"22069",17
-"22071",21
-"22079",5
-"22087",2
-"22089",1
-"22095",3
-"23001",2
-"23003",2
-"23005",44
-"23007",1
-"23009",4
-"23011",3
-"23013",2
-"23015",2
-"23017",1
-"23019",4
-"23023",3
-"23031",11
-"24003",40
-"24027",1
-"24031",44
-"24033",16
-"24035",5
-"24037",1
-"24510",48
-"25001",11
-"25003",25
-"25005",47
-"25009",223
-"25011",37
-"25013",22
-"25015",1
-"25017",289
-"25021",183
-"25023",49
-"25025",242
-"25027",116
-"26005",1
-"26021",11
-"26023",3
-"26035",2
-"26041",1
-"26049",3
-"26065",2
-"26077",6
-"26081",28
-"26093",1
-"26099",4
-"26125",29
-"26129",1
-"26139",4
-"26145",2
-"26147",5
-"26161",63
-"26163",23
-"27003",1
-"27009",7
-"27013",20
-"27021",16
-"27027",1
-"27037",4
-"27053",33
-"27061",1
-"27095",3
-"27123",15
-"27139",7
-"27145",8
-"27163",3
-"27169",15
-"28021",3
-"28059",19
-"28069",13
-"28075",4
-"28085",2
-"28089",23
-"28095",3
-"28153",4
-"29019",10
-"29027",5
-"29047",1
-"29077",3
-"29095",6
-"29097",11
-"29099",30
-"29145",2
-"29163",2
-"29169",4
-"29183",2
-"29189",31
-"29199",3
-"29215",1
-"29510",3
-"30013",1
-"30029",3
-"30031",2
-"30049",67
-"30063",7
-"30087",3
-"31025",4
-"31055",17
-"31109",14
-"31153",13
-"31157",4
-"32003",52
-"32005",5
-"33001",8
-"33005",10
-"33009",148
-"33011",29
-"33013",13
-"33015",25
-"33017",2
-"33019",21
-"34001",9
-"34003",239
-"34005",22
-"34007",5
-"34011",5
-"34013",57
-"34017",12
-"34021",26
-"34023",32
-"34025",51
-"34027",25
-"34029",7
-"34031",10
-"34035",42
-"34037",1
-"34039",28
-"34041",8
-"35001",49
-"35013",8
-"35028",6
-"35043",2
-"35049",10
-"35061",4
-"36001",9
-"36005",46
-"36013",41
-"36027",4
-"36029",78
-"36039",1
-"36043",2
-"36047",28
-"36053",5
-"36055",4
-"36059",55
-"36061",214
-"36067",11
-"36071",8
-"36073",1
-"36077",2
-"36081",7
-"36083",5
-"36085",6
-"36091",7
-"36103",47
-"36105",6
-"36107",2
-"36109",2
-"36111",20
-"36119",52
-"36121",1
-"37001",21
-"37003",1
-"37017",3
-"37019",3
-"37021",1
-"37025",49
-"37035",8
-"37049",2
-"37051",10
-"37057",10
-"37063",60
-"37065",3
-"37067",20
-"37069",19
-"37071",26
-"37077",8
-"37081",1
-"37085",2
-"37089",2
-"37093",4
-"37097",3
-"37107",5
-"37109",1
-"37111",15
-"37119",50
-"37125",2
-"37127",2
-"37129",8
-"37133",2
-"37135",4
-"37139",3
-"37151",2
-"37159",10
-"37165",1
-"37167",2
-"37171",2
-"37179",3
-"37183",45
-"38017",2
-"38043",8
-"38089",6
-"39015",2
-"39017",4
-"39021",5
-"39023",1
-"39029",9
-"39035",30
-"39041",2
-"39043",10
-"39045",5
-"39049",16
-"39055",2
-"39061",35
-"39093",8
-"39099",3
-"39101",6
-"39103",2
-"39107",14
-"39113",2
-"39121",23
-"39127",4
-"39151",1
-"39153",14
-"39161",2
-"40009",1
-"40027",1
-"40087",1
-"40101",2
-"40109",5
-"40115",2
-"40131",1
-"40143",4
-"41001",23
-"41011",65
-"41015",7
-"41017",4
-"41019",4
-"41029",66
-"41033",13
-"41035",22
-"41037",3
-"41039",19
-"41047",12
-"41051",13
-"41053",1
-"41061",7
-"41067",25
-"41071",2
-"42001",5
-"42003",93
-"42007",2
-"42017",7
-"42019",3
-"42029",18
-"42041",7
-"42043",4
-"42045",68
-"42049",17
-"42051",39
-"42063",5
-"42069",2
-"42071",4
-"42089",1
-"42091",355
-"42095",7
-"42101",104
-"42107",2
-"42109",3
-"42115",3
-"42123",4
-"42129",18
-"42133",3
-"44001",10
-"44003",2
-"44005",5
-"44007",51
-"44009",3
-"45007",5
-"45013",2
-"45019",22
-"45031",3
-"45035",2
-"45041",3
-"45043",3
-"45045",3
-"45047",2
-"45053",5
-"45063",20
-"45079",33
-"45083",2
-"46081",15
-"46083",14
-"47001",1
-"47037",14
-"47045",1
-"47053",1
-"47059",3
-"47063",1
-"47065",9
-"47091",1
-"47093",10
-"47119",2
-"47125",5
-"47141",10
-"47149",1
-"47157",2
-"47179",7
-"47187",39
-"48001",2
-"48027",10
-"48029",51
-"48039",2
-"48041",2
-"48051",1
-"48061",41
-"48085",38
-"48091",1
-"48113",72
-"48123",8
-"48131",3
-"48141",17
-"48157",29
-"48181",3
-"48183",1
-"48201",378
-"48209",7
-"48215",5
-"48257",11
-"48303",10
-"48309",6
-"48325",2
-"48339",27
-"48349",2
-"48375",12
-"48381",1
-"48397",3
-"48437",8
-"48439",50
-"48453",7
-"48457",2
-"48469",1
-"48479",2
-"48481",1
-"48485",6
-"48491",3
-"49003",1
-"49011",18
-"49035",37
-"49037",6
-"49047",1
-"49049",63
-"49053",1
-"49057",5
-"50007",1
-"50015",4
-"50017",8
-"50019",4
-"50023",8
-"50025",4
-"51003",1
-"51041",7
-"51043",4
-"51059",77
-"51061",5
-"51065",1
-"51067",23
-"51087",32
-"51095",1
-"51097",3
-"51099",1
-"51107",19
-"51109",7
-"51139",1
-"51143",1
-"51145",1
-"51153",16
-"51161",1
-"51177",1
-"51179",12
-"51199",11
-"51510",19
-"51590",1
-"51610",9
-"51660",7
-"51680",15
-"51700",2
-"51760",2
-"51800",3
-"51810",7
-"51840",1
-"53001",18
-"53005",3
-"53009",2
-"53011",10
-"53015",15
-"53033",91
-"53035",7
-"53037",3
-"53043",1
-"53045",5
-"53047",15
-"53051",4
-"53053",23
-"53061",15
-"53063",8
-"53065",28
-"53067",6
-"53071",5
-"53073",2
-"53075",29
-"53077",1
-"54003",1
-"54039",15
-"54057",2
-"54061",1
-"54081",2
-"54099",6
-"55009",6
-"55017",2
-"55023",1
-"55025",26
-"55027",4
-"55029",2
-"55063",3
-"55071",9
-"55073",11
-"55079",26
-"55087",2
-"55101",2
-"55105",7
-"55109",25
-"55115",2
-"55133",33
-"55135",4
-"55141",6
-"56001",8
-"56021",1
-"56025",1
-"56027",4
-"56029",1
-"56033",1
-"56039",7
-"69110",26
+FIPS,value,County
+"01003",1,"Baldwin County"
+"01073",11,"Jefferson County"
+"01077",4,"Lauderdale County"
+"01083",2,"Limestone County"
+"01089",14,"Madison County"
+"01097",16,"Mobile County"
+"01101",4,"Montgomery County"
+"01103",8,"Morgan County"
+"01115",1,"St. Clair County"
+"01117",5,"Shelby County"
+"02020",2,"Anchorage County"
+"02090",1,"Fairbanks North Star Borough"
+"04005",20,"Coconino County"
+"04007",1,"Gila County"
+"04011",3,"Greenlee County"
+"04012",1,"La Paz County"
+"04013",76,"Maricopa County"
+"04019",5,"Pima County"
+"04021",3,"Pinal County"
+"04027",1,"Yuma County"
+"05119",12,"Pulaski County"
+"05125",34,"Saline County"
+"06001",36,"Alameda County"
+"06005",4,"Amador County"
+"06013",9,"Contra Costa County"
+"06017",4,"El Dorado County"
+"06019",3,"Fresno County"
+"06023",11,"Humboldt County"
+"06029",12,"Kern County"
+"06037",283,"Los Angeles County"
+"06041",20,"Marin County"
+"06047",10,"Merced County"
+"06053",18,"Monterey County"
+"06059",42,"Orange County"
+"06061",2,"Placer County"
+"06065",14,"Riverside County"
+"06067",19,"Sacramento County"
+"06071",20,"San Bernardino County"
+"06073",94,"San Diego County"
+"06075",24,"San Francisco County"
+"06077",6,"San Joaquin County"
+"06079",15,"San Luis Obispo County"
+"06081",29,"San Mateo County"
+"06083",15,"Santa Barbara County"
+"06085",76,"Santa Clara County"
+"06095",1,"Solano County"
+"06097",8,"Sonoma County"
+"06099",9,"Stanislaus County"
+"06107",1,"Tulare County"
+"06111",16,"Ventura County"
+"06113",10,"Yolo County"
+"08001",9,"Adams County"
+"08005",11,"Arapahoe County"
+"08013",2,"Boulder County"
+"08014",2,"Broomfield County"
+"08031",25,"Denver County"
+"08035",7,"Douglas County"
+"08041",16,"El Paso County"
+"08059",24,"Jefferson County"
+"08065",9,"Lake County"
+"08069",54,"Larimer County"
+"08071",1,"Las Animas County"
+"08077",9,"Mesa County"
+"08097",1,"Pitkin County"
+"08099",3,"Prowers County"
+"08123",13,"Weld County"
+"09001",11,"Fairfield County"
+"09003",13,"Hartford County"
+"09005",44,"Litchfield County"
+"09007",1,"Middlesex County"
+"09009",93,"New Haven County"
+"09110",10,"Capitol Planning Region"
+"09120",7,"Greater Bridgeport Planning Region"
+"09130",1,"Lower Connecticut River Valley Planning Region"
+"09140",2,"Naugatuck Valley Planning Region"
+"09150",2,"Northeastern Connecticut Planning Region"
+"09170",46,"South Central Connecticut Planning Region"
+"09180",5,"Southeastern Connecticut Planning Region"
+"09190",212,"Western Connecticut Planning Region"
+"10001",3,"Kent County"
+"10003",30,"New Castle County"
+"10005",1,"Sussex County"
+"11001",132,"District Of Columbia County"
+"12009",7,"Brevard County"
+"12011",5,"Broward County"
+"12015",5,"Charlotte County"
+"12019",4,"Clay County"
+"12021",3,"Collier County"
+"12031",12,"Duval County"
+"12035",7,"Flagler County"
+"12055",36,"Highlands County"
+"12057",34,"Hillsborough County"
+"12069",2,"Lake County"
+"12071",2,"Lee County"
+"12073",9,"Leon County"
+"12083",1,"Marion County"
+"12085",3,"Martin County"
+"12086",37,"Miami-Dade County"
+"12087",1,"Monroe County"
+"12095",33,"Orange County"
+"12097",8,"Osceola County"
+"12099",29,"Palm Beach County"
+"12101",11,"Pasco County"
+"12103",3,"Pinellas County"
+"12105",17,"Polk County"
+"12109",1,"St. Johns County"
+"12115",1,"Sarasota County"
+"12117",32,"Seminole County"
+"12127",3,"Volusia County"
+"13021",4,"Bibb County"
+"13045",10,"Carroll County"
+"13051",8,"Chatham County"
+"13057",12,"Cherokee County"
+"13067",8,"Cobb County"
+"13089",5,"DeKalb County"
+"13097",1,"Douglas County"
+"13113",16,"Fayette County"
+"13117",2,"Forsyth County"
+"13121",32,"Fulton County"
+"13127",1,"Glynn County"
+"13135",8,"Gwinnett County"
+"13151",5,"Henry County"
+"13153",5,"Houston County"
+"13179",1,"Liberty County"
+"13185",1,"Lowndes County"
+"13209",3,"Montgomery County"
+"13217",1,"Newton County"
+"13233",4,"Polk County"
+"13245",18,"Richmond County"
+"13269",6,"Taylor County"
+"13275",2,"Thomas County"
+"15001",4,"Hawaii County"
+"15003",72,"Honolulu County"
+"15007",1,"Kauai County"
+"15009",4,"Maui County"
+"16001",46,"Ada County"
+"16013",7,"Blaine County"
+"16015",16,"Boise County"
+"16019",7,"Bonneville County"
+"16027",8,"Canyon County"
+"16041",52,"Franklin County"
+"16053",3,"Jerome County"
+"16055",16,"Kootenai County"
+"16073",26,"Owyhee County"
+"16075",2,"Payette County"
+"16077",25,"Power County"
+"16083",11,"Twin Falls County"
+"16085",1,"Valley County"
+"17019",36,"Champaign County"
+"17027",8,"Clinton County"
+"17031",258,"Cook County"
+"17043",15,"DuPage County"
+"17089",21,"Kane County"
+"17097",9,"Lake County"
+"17111",4,"McHenry County"
+"17135",10,"Montgomery County"
+"17137",4,"Morgan County"
+"17141",8,"Ogle County"
+"17143",6,"Peoria County"
+"17163",5,"St. Clair County"
+"17179",1,"Tazewell County"
+"17189",8,"Washington County"
+"17197",6,"Will County"
+"18003",12,"Allen County"
+"18007",38,"Benton County"
+"18011",15,"Boone County"
+"18019",4,"Clark County"
+"18027",1,"Daviess County"
+"18031",6,"Decatur County"
+"18053",3,"Grant County"
+"18057",8,"Hamilton County"
+"18059",3,"Hancock County"
+"18065",7,"Henry County"
+"18085",1,"Kosciusko County"
+"18089",66,"Lake County"
+"18091",2,"LaPorte County"
+"18097",44,"Marion County"
+"18109",4,"Morgan County"
+"18135",3,"Randolph County"
+"18141",1,"St. Joseph County"
+"18145",9,"Shelby County"
+"18169",1,"Wabash County"
+"19013",1,"Black Hawk County"
+"19019",4,"Buchanan County"
+"19045",3,"Clinton County"
+"19049",2,"Dallas County"
+"19099",1,"Jasper County"
+"19103",1,"Johnson County"
+"19113",6,"Linn County"
+"19153",6,"Polk County"
+"19157",1,"Poweshiek County"
+"19167",3,"Sioux County"
+"20001",1,"Allen County"
+"20015",3,"Butler County"
+"20037",2,"Crawford County"
+"20045",10,"Douglas County"
+"20055",9,"Finney County"
+"20077",4,"Harper County"
+"20091",4,"Johnson County"
+"20113",1,"McPherson County"
+"20173",13,"Sedgwick County"
+"20177",21,"Shawnee County"
+"20181",3,"Sherman County"
+"21015",1,"Boone County"
+"21025",6,"Breathitt County"
+"21067",5,"Fayette County"
+"21089",1,"Greenup County"
+"21093",1,"Hardin County"
+"21111",35,"Jefferson County"
+"21113",15,"Jessamine County"
+"21117",5,"Kenton County"
+"21157",3,"Marshall County"
+"21193",4,"Perry County"
+"21209",2,"Scott County"
+"22005",4,"Ascension Parish"
+"22019",7,"Calcasieu Parish"
+"22033",24,"East Baton Rouge Parish"
+"22051",8,"Jefferson Parish"
+"22055",11,"Lafayette Parish"
+"22069",17,"Natchitoches Parish"
+"22071",21,"Orleans Parish"
+"22079",5,"Rapides Parish"
+"22087",2,"St. Bernard Parish"
+"22089",1,"St. Charles Parish"
+"22095",3,"St. John The Baptist Parish"
+"23001",2,"Androscoggin County"
+"23003",2,"Aroostook County"
+"23005",44,"Cumberland County"
+"23007",1,"Franklin County"
+"23009",4,"Hancock County"
+"23011",3,"Kennebec County"
+"23013",2,"Knox County"
+"23015",2,"Lincoln County"
+"23017",1,"Oxford County"
+"23019",4,"Penobscot County"
+"23023",3,"Sagadahoc County"
+"23031",11,"York County"
+"24003",40,"Anne Arundel County"
+"24027",1,"Howard County"
+"24031",44,"Montgomery County"
+"24033",16,"Prince George'S County"
+"24035",5,"Queen Anne'S County"
+"24037",1,"St. Mary'S County"
+"24510",48,"Baltimore County"
+"25001",11,"Barnstable County"
+"25003",25,"Berkshire County"
+"25005",47,"Bristol County"
+"25009",223,"Essex County"
+"25011",37,"Franklin County"
+"25013",22,"Hampden County"
+"25015",1,"Hampshire County"
+"25017",289,"Middlesex County"
+"25021",183,"Norfolk County"
+"25023",49,"Plymouth County"
+"25025",242,"Suffolk County"
+"25027",116,"Worcester County"
+"26005",1,"Allegan County"
+"26021",11,"Berrien County"
+"26023",3,"Branch County"
+"26035",2,"Clare County"
+"26041",1,"Delta County"
+"26049",3,"Genesee County"
+"26065",2,"Ingham County"
+"26077",6,"Kalamazoo County"
+"26081",28,"Kent County"
+"26093",1,"Livingston County"
+"26099",4,"Macomb County"
+"26125",29,"Oakland County"
+"26129",1,"Ogemaw County"
+"26139",4,"Ottawa County"
+"26145",2,"Saginaw County"
+"26147",5,"St. Clair County"
+"26161",63,"Washtenaw County"
+"26163",23,"Wayne County"
+"27003",1,"Anoka County"
+"27009",7,"Benton County"
+"27013",20,"Blue Earth County"
+"27021",16,"Cass County"
+"27027",1,"Clay County"
+"27037",4,"Dakota County"
+"27053",33,"Hennepin County"
+"27061",1,"Itasca County"
+"27095",3,"Mille Lacs County"
+"27123",15,"Ramsey County"
+"27139",7,"Scott County"
+"27145",8,"Stearns County"
+"27163",3,"Washington County"
+"27169",15,"Winona County"
+"28021",3,"Claiborne County"
+"28059",19,"Jackson County"
+"28069",13,"Kemper County"
+"28075",4,"Lauderdale County"
+"28085",2,"Lincoln County"
+"28089",23,"Madison County"
+"28095",3,"Monroe County"
+"28153",4,"Wayne County"
+"29019",10,"Boone County"
+"29027",5,"Callaway County"
+"29047",1,"Clay County"
+"29077",3,"Greene County"
+"29095",6,"Jackson County"
+"29097",11,"Jasper County"
+"29099",30,"Jefferson County"
+"29145",2,"Newton County"
+"29163",2,"Pike County"
+"29169",4,"Pulaski County"
+"29183",2,"St. Charles County"
+"29189",31,"St. Louis County"
+"29199",3,"Scotland County"
+"29215",1,"Texas County"
+"29510",3,"St. Louis County"
+"30013",1,"Cascade County"
+"30029",3,"Flathead County"
+"30031",2,"Gallatin County"
+"30049",67,"Lewis And Clark County"
+"30063",7,"Missoula County"
+"30087",3,"Rosebud County"
+"31025",4,"Cass County"
+"31055",17,"Douglas County"
+"31109",14,"Lancaster County"
+"31153",13,"Sarpy County"
+"31157",4,"Scotts Bluff County"
+"32003",52,"Clark County"
+"32005",5,"Douglas County"
+"33001",8,"Belknap County"
+"33005",10,"Cheshire County"
+"33009",148,"Grafton County"
+"33011",29,"Hillsborough County"
+"33013",13,"Merrimack County"
+"33015",25,"Rockingham County"
+"33017",2,"Strafford County"
+"33019",21,"Sullivan County"
+"34001",9,"Atlantic County"
+"34003",239,"Bergen County"
+"34005",22,"Burlington County"
+"34007",5,"Camden County"
+"34011",5,"Cumberland County"
+"34013",57,"Essex County"
+"34017",12,"Hudson County"
+"34021",26,"Mercer County"
+"34023",32,"Middlesex County"
+"34025",51,"Monmouth County"
+"34027",25,"Morris County"
+"34029",7,"Ocean County"
+"34031",10,"Passaic County"
+"34035",42,"Somerset County"
+"34037",1,"Sussex County"
+"34039",28,"Union County"
+"34041",8,"Warren County"
+"35001",49,"Bernalillo County"
+"35013",8,"DoñA Ana County"
+"35028",6,"Los Alamos County"
+"35043",2,"Sandoval County"
+"35049",10,"Santa Fe County"
+"35061",4,"Valencia County"
+"36001",9,"Albany County"
+"36005",46,"Bronx County"
+"36013",41,"Chautauqua County"
+"36027",4,"Dutchess County"
+"36029",78,"Erie County"
+"36039",1,"Greene County"
+"36043",2,"Herkimer County"
+"36047",28,"Kings County"
+"36053",5,"Madison County"
+"36055",4,"Monroe County"
+"36059",55,"Nassau County"
+"36061",214,"New York County"
+"36067",11,"Onondaga County"
+"36071",8,"Orange County"
+"36073",1,"Orleans County"
+"36077",2,"Otsego County"
+"36081",7,"Queens County"
+"36083",5,"Rensselaer County"
+"36085",6,"Richmond County"
+"36091",7,"Saratoga County"
+"36103",47,"Suffolk County"
+"36105",6,"Sullivan County"
+"36107",2,"Tioga County"
+"36109",2,"Tompkins County"
+"36111",20,"Ulster County"
+"36119",52,"Westchester County"
+"36121",1,"Wyoming County"
+"37001",21,"Alamance County"
+"37003",1,"Alexander County"
+"37017",3,"Bladen County"
+"37019",3,"Brunswick County"
+"37021",1,"Buncombe County"
+"37025",49,"Cabarrus County"
+"37035",8,"Catawba County"
+"37049",2,"Craven County"
+"37051",10,"Cumberland County"
+"37057",10,"Davidson County"
+"37063",60,"Durham County"
+"37065",3,"Edgecombe County"
+"37067",20,"Forsyth County"
+"37069",19,"Franklin County"
+"37071",26,"Gaston County"
+"37077",8,"Granville County"
+"37081",1,"Guilford County"
+"37085",2,"Harnett County"
+"37089",2,"Henderson County"
+"37093",4,"Hoke County"
+"37097",3,"Iredell County"
+"37107",5,"Lenoir County"
+"37109",1,"Lincoln County"
+"37111",15,"McDowell County"
+"37119",50,"Mecklenburg County"
+"37125",2,"Moore County"
+"37127",2,"Nash County"
+"37129",8,"New Hanover County"
+"37133",2,"Onslow County"
+"37135",4,"Orange County"
+"37139",3,"Pasquotank County"
+"37151",2,"Randolph County"
+"37159",10,"Rowan County"
+"37165",1,"Scotland County"
+"37167",2,"Stanly County"
+"37171",2,"Surry County"
+"37179",3,"Union County"
+"37183",45,"Wake County"
+"38017",2,"Cass County"
+"38043",8,"Kidder County"
+"38089",6,"Stark County"
+"39015",2,"Brown County"
+"39017",4,"Butler County"
+"39021",5,"Champaign County"
+"39023",1,"Clark County"
+"39029",9,"Columbiana County"
+"39035",30,"Cuyahoga County"
+"39041",2,"Delaware County"
+"39043",10,"Erie County"
+"39045",5,"Fairfield County"
+"39049",16,"Franklin County"
+"39055",2,"Geauga County"
+"39061",35,"Hamilton County"
+"39093",8,"Lorain County"
+"39099",3,"Mahoning County"
+"39101",6,"Marion County"
+"39103",2,"Medina County"
+"39107",14,"Mercer County"
+"39113",2,"Montgomery County"
+"39121",23,"Noble County"
+"39127",4,"Perry County"
+"39151",1,"Stark County"
+"39153",14,"Summit County"
+"39161",2,"Van Wert County"
+"40009",1,"Beckham County"
+"40027",1,"Cleveland County"
+"40087",1,"McClain County"
+"40101",2,"Muskogee County"
+"40109",5,"Oklahoma County"
+"40115",2,"Ottawa County"
+"40131",1,"Rogers County"
+"40143",4,"Tulsa County"
+"41001",23,"Baker County"
+"41011",65,"Coos County"
+"41015",7,"Curry County"
+"41017",4,"Deschutes County"
+"41019",4,"Douglas County"
+"41029",66,"Jackson County"
+"41033",13,"Josephine County"
+"41035",22,"Klamath County"
+"41037",3,"Lake County"
+"41039",19,"Lane County"
+"41047",12,"Marion County"
+"41051",13,"Multnomah County"
+"41053",1,"Polk County"
+"41061",7,"Union County"
+"41067",25,"Washington County"
+"41071",2,"Yamhill County"
+"42001",5,"Adams County"
+"42003",93,"Allegheny County"
+"42007",2,"Beaver County"
+"42017",7,"Bucks County"
+"42019",3,"Butler County"
+"42029",18,"Chester County"
+"42041",7,"Cumberland County"
+"42043",4,"Dauphin County"
+"42045",68,"Delaware County"
+"42049",17,"Erie County"
+"42051",39,"Fayette County"
+"42063",5,"Indiana County"
+"42069",2,"Lackawanna County"
+"42071",4,"Lancaster County"
+"42089",1,"Monroe County"
+"42091",355,"Montgomery County"
+"42095",7,"Northampton County"
+"42101",104,"Philadelphia County"
+"42107",2,"Schuylkill County"
+"42109",3,"Snyder County"
+"42115",3,"Susquehanna County"
+"42123",4,"Warren County"
+"42129",18,"Westmoreland County"
+"42133",3,"York County"
+"44001",10,"Bristol County"
+"44003",2,"Kent County"
+"44005",5,"Newport County"
+"44007",51,"Providence County"
+"44009",3,"Washington County"
+"45007",5,"Anderson County"
+"45013",2,"Beaufort County"
+"45019",22,"Charleston County"
+"45031",3,"Darlington County"
+"45035",2,"Dorchester County"
+"45041",3,"Florence County"
+"45043",3,"Georgetown County"
+"45045",3,"Greenville County"
+"45047",2,"Greenwood County"
+"45053",5,"Jasper County"
+"45063",20,"Lexington County"
+"45079",33,"Richland County"
+"45083",2,"Spartanburg County"
+"46081",15,"Lawrence County"
+"46083",14,"Lincoln County"
+"47001",1,"Anderson County"
+"47037",14,"Davidson County"
+"47045",1,"Dyer County"
+"47053",1,"Gibson County"
+"47059",3,"Greene County"
+"47063",1,"Hamblen County"
+"47065",9,"Hamilton County"
+"47091",1,"Johnson County"
+"47093",10,"Knox County"
+"47119",2,"Maury County"
+"47125",5,"Montgomery County"
+"47141",10,"Putnam County"
+"47149",1,"Rutherford County"
+"47157",2,"Shelby County"
+"47179",7,"Washington County"
+"47187",39,"Williamson County"
+"48001",2,"Anderson County"
+"48027",10,"Bell County"
+"48029",51,"Bexar County"
+"48039",2,"Brazoria County"
+"48041",2,"Brazos County"
+"48051",1,"Burleson County"
+"48061",41,"Cameron County"
+"48085",38,"Collin County"
+"48091",1,"Comal County"
+"48113",72,"Dallas County"
+"48123",8,"DeWitt County"
+"48131",3,"Duval County"
+"48141",17,"El Paso County"
+"48157",29,"Fort Bend County"
+"48181",3,"Grayson County"
+"48183",1,"Gregg County"
+"48201",378,"Harris County"
+"48209",7,"Hays County"
+"48215",5,"Hidalgo County"
+"48257",11,"Kaufman County"
+"48303",10,"Lubbock County"
+"48309",6,"McLennan County"
+"48325",2,"Medina County"
+"48339",27,"Montgomery County"
+"48349",2,"Navarro County"
+"48375",12,"Potter County"
+"48381",1,"Randall County"
+"48397",3,"Rockwall County"
+"48437",8,"Swisher County"
+"48439",50,"Tarrant County"
+"48453",7,"Travis County"
+"48457",2,"Tyler County"
+"48469",1,"Victoria County"
+"48479",2,"Webb County"
+"48481",1,"Wharton County"
+"48485",6,"Wichita County"
+"48491",3,"Williamson County"
+"49003",1,"Box Elder County"
+"49011",18,"Davis County"
+"49035",37,"Salt Lake County"
+"49037",6,"San Juan County"
+"49047",1,"Uintah County"
+"49049",63,"Utah County"
+"49053",1,"Washington County"
+"49057",5,"Weber County"
+"50007",1,"Chittenden County"
+"50015",4,"Lamoille County"
+"50017",8,"Orange County"
+"50019",4,"Orleans County"
+"50023",8,"Washington County"
+"50025",4,"Windham County"
+"51003",1,"Albemarle County"
+"51041",7,"Chesterfield County"
+"51043",4,"Clarke County"
+"51059",77,"Fairfax County"
+"51061",5,"Fauquier County"
+"51065",1,"Fluvanna County"
+"51067",23,"Franklin County"
+"51087",32,"Henrico County"
+"51095",1,"James City County"
+"51097",3,"King and Queen County"
+"51099",1,"King George County"
+"51107",19,"Loudoun County"
+"51109",7,"Louisa County"
+"51139",1,"Page County"
+"51143",1,"Pittsylvania County"
+"51145",1,"Powhatan County"
+"51153",16,"Prince William County"
+"51161",1,"Roanoke County"
+"51177",1,"Spotsylvania County"
+"51179",12,"Stafford County"
+"51199",11,"York County"
+"51510",19,"Alexandria County"
+"51590",1,"Danville County"
+"51610",9,"Falls Church County"
+"51660",7,"Harrisonburg County"
+"51680",15,"Lynchburg County"
+"51700",2,"Newport News County"
+"51760",2,"Richmond County"
+"51800",3,"Suffolk County"
+"51810",7,"Virginia Beach County"
+"51840",1,"Winchester County"
+"53001",18,"Adams County"
+"53005",3,"Benton County"
+"53009",2,"Clallam County"
+"53011",10,"Clark County"
+"53015",15,"Cowlitz County"
+"53033",91,"King County"
+"53035",7,"Kitsap County"
+"53037",3,"Kittitas County"
+"53043",1,"Lincoln County"
+"53045",5,"Mason County"
+"53047",15,"Okanogan County"
+"53051",4,"Pend Oreille County"
+"53053",23,"Pierce County"
+"53061",15,"Snohomish County"
+"53063",8,"Spokane County"
+"53065",28,"Stevens County"
+"53067",6,"Thurston County"
+"53071",5,"Walla Walla County"
+"53073",2,"Whatcom County"
+"53075",29,"Whitman County"
+"53077",1,"Yakima County"
+"54003",1,"Berkeley County"
+"54039",15,"Kanawha County"
+"54057",2,"Mineral County"
+"54061",1,"Monongalia County"
+"54081",2,"Raleigh County"
+"54099",6,"Wayne County"
+"55009",6,"Brown County"
+"55017",2,"Chippewa County"
+"55023",1,"Crawford County"
+"55025",26,"Dane County"
+"55027",4,"Dodge County"
+"55029",2,"Door County"
+"55063",3,"La Crosse County"
+"55071",9,"Manitowoc County"
+"55073",11,"Marathon County"
+"55079",26,"Milwaukee County"
+"55087",2,"Outagamie County"
+"55101",2,"Racine County"
+"55105",7,"Rock County"
+"55109",25,"St. Croix County"
+"55115",2,"Shawano County"
+"55133",33,"Waukesha County"
+"55135",4,"Waupaca County"
+"55141",6,"Wood County"
+"56001",8,"Albany County"
+"56021",1,"Laramie County"
+"56025",1,"Natrona County"
+"56027",4,"Niobrara County"
+"56029",1,"Park County"
+"56033",1,"Sheridan County"
+"56039",7,"Teton County"
+"69110",26,"Saipan Municipality"
