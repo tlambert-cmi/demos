@@ -1,0 +1,692 @@
+FIPS,County,value1,value2,value3
+"01003","Baldwin County",1,1,112
+"01073","Jefferson County",11,3,282
+"01077","Lauderdale County",4,1,77
+"01083","Limestone County",2,1,91
+"01089","Madison County",14,6,405
+"01097","Mobile County",16,4,263
+"01101","Montgomery County",4,1,119
+"01103","Morgan County",8,1,56
+"01115","St. Clair County",1,1,40
+"01117","Shelby County",5,1,169
+"02020","Anchorage County",2,2,37
+"02090","Fairbanks North Star Borough",1,1,22
+"04005","Coconino County",20,2,187
+"04007","Gila County",1,1,53
+"04011","Greenlee County",3,1,29
+"04012","La Paz County",1,1,28
+"04013","Maricopa County",76,25,2132
+"04019","Pima County",5,5,352
+"04021","Pinal County",3,1,73
+"04027","Yuma County",1,1,17
+"05119","Pulaski County",12,3,273
+"05125","Saline County",34,2,733
+"06001","Alameda County",36,8,1076
+"06005","Amador County",4,1,78
+"06013","Contra Costa County",9,3,318
+"06017","El Dorado County",4,1,99
+"06019","Fresno County",3,2,162
+"06023","Humboldt County",11,1,141
+"06029","Kern County",12,2,263
+"06037","Los Angeles County",283,43,5775
+"06041","Marin County",20,3,490
+"06047","Merced County",10,1,143
+"06053","Monterey County",18,5,405
+"06059","Orange County",42,9,809
+"06061","Placer County",2,2,150
+"06065","Riverside County",14,8,583
+"06067","Sacramento County",19,5,541
+"06071","San Bernardino County",20,6,649
+"06073","San Diego County",94,24,2022
+"06075","San Francisco County",24,7,390
+"06077","San Joaquin County",6,2,207
+"06079","San Luis Obispo County",15,3,277
+"06081","San Mateo County",29,6,501
+"06083","Santa Barbara County",15,3,275
+"06085","Santa Clara County",76,17,2003
+"06095","Solano County",1,1,34
+"06097","Sonoma County",8,2,205
+"06099","Stanislaus County",9,2,403
+"06107","Tulare County",1,1,30
+"06111","Ventura County",16,4,575
+"06113","Yolo County",10,1,113
+"08001","Adams County",9,3,274
+"08005","Arapahoe County",11,3,337
+"08013","Boulder County",2,1,116
+"08014","Broomfield County",2,2,118
+"08031","Denver County",25,9,477
+"08035","Douglas County",7,3,189
+"08041","El Paso County",16,5,546
+"08059","Jefferson County",24,5,383
+"08065","Lake County",9,2,82
+"08069","Larimer County",54,11,754
+"08071","Las Animas County",1,1,9
+"08077","Mesa County",9,2,199
+"08097","Pitkin County",1,1,41
+"08099","Prowers County",3,1,12
+"08123","Weld County",13,3,461
+"09001","Fairfield County",11,3,171
+"09003","Hartford County",13,3,190
+"09005","Litchfield County",44,6,304
+"09007","Middlesex County",1,1,21
+"09009","New Haven County",93,7,597
+"09110","Capitol Planning Region",10,5,116
+"09120","Greater Bridgeport Planning Region",7,3,158
+"09130","Lower Connecticut River Valley Planning Region",1,1,42
+"09140","Naugatuck Valley Planning Region",2,1,44
+"09150","Northeastern Connecticut Planning Region",2,1,35
+"09170","South Central Connecticut Planning Region",46,9,958
+"09180","Southeastern Connecticut Planning Region",5,2,107
+"09190","Western Connecticut Planning Region",212,23,3926
+"10001","Kent County",3,1,40
+"10003","New Castle County",30,7,463
+"10005","Sussex County",1,1,28
+"11001","District Of Columbia County",132,27,1893
+"12009","Brevard County",7,4,289
+"12011","Broward County",5,3,148
+"12015","Charlotte County",5,2,68
+"12019","Clay County",4,1,209
+"12021","Collier County",3,1,157
+"12031","Duval County",12,4,497
+"12035","Flagler County",7,1,126
+"12055","Highlands County",36,2,584
+"12057","Hillsborough County",34,7,684
+"12069","Lake County",2,1,300
+"12071","Lee County",2,1,39
+"12073","Leon County",9,2,420
+"12083","Marion County",1,1,16
+"12085","Martin County",3,1,121
+"12086","Miami-Dade County",37,12,1162
+"12087","Monroe County",1,1,36
+"12095","Orange County",33,6,1784
+"12097","Osceola County",8,3,168
+"12099","Palm Beach County",29,9,762
+"12101","Pasco County",11,1,369
+"12103","Pinellas County",3,3,86
+"12105","Polk County",17,5,377
+"12109","St. Johns County",1,1,47
+"12115","Sarasota County",1,1,43
+"12117","Seminole County",32,5,695
+"12127","Volusia County",3,1,355
+"13021","Bibb County",4,1,86
+"13045","Carroll County",10,2,222
+"13051","Chatham County",8,3,152
+"13057","Cherokee County",12,2,212
+"13067","Cobb County",8,3,386
+"13077","Coweta County",0,0,70
+"13089","DeKalb County",5,3,179
+"13097","Douglas County",1,1,20
+"13113","Fayette County",16,3,297
+"13117","Forsyth County",2,2,140
+"13121","Fulton County",32,8,1216
+"13127","Glynn County",1,1,134
+"13135","Gwinnett County",8,2,259
+"13151","Henry County",5,1,288
+"13153","Houston County",5,1,40
+"13179","Liberty County",1,1,49
+"13185","Lowndes County",1,1,43
+"13209","Montgomery County",3,1,27
+"13217","Newton County",1,1,90
+"13233","Polk County",4,1,57
+"13245","Richmond County",18,1,95
+"13255","Spalding County",0,0,80
+"13269","Taylor County",6,1,147
+"13275","Thomas County",2,1,36
+"15001","Hawaii County",4,2,90
+"15003","Honolulu County",72,10,969
+"15007","Kauai County",1,1,43
+"15009","Maui County",4,1,140
+"16001","Ada County",46,12,1485
+"16013","Blaine County",7,1,208
+"16015","Boise County",16,0,12
+"16019","Bonneville County",7,2,54
+"16027","Canyon County",8,3,368
+"16041","Franklin County",52,1,843
+"16053","Jerome County",3,1,97
+"16055","Kootenai County",16,3,649
+"16073","Owyhee County",26,2,658
+"16075","Payette County",2,1,73
+"16077","Power County",25,2,510
+"16083","Twin Falls County",11,1,231
+"16085","Valley County",1,1,41
+"17019","Champaign County",36,3,525
+"17027","Clinton County",8,2,169
+"17031","Cook County",258,50,5206
+"17043","DuPage County",15,4,379
+"17077","Jackson County",0,1,48
+"17089","Kane County",21,6,558
+"17097","Lake County",9,7,291
+"17111","McHenry County",4,2,73
+"17119","Madison County",0,1,0
+"17135","Montgomery County",10,1,226
+"17137","Morgan County",4,1,157
+"17141","Ogle County",8,1,49
+"17143","Peoria County",6,2,107
+"17163","St. Clair County",5,3,191
+"17179","Tazewell County",1,1,43
+"17189","Washington County",8,1,297
+"17197","Will County",6,2,122
+"18003","Allen County",12,1,328
+"18007","Benton County",38,1,438
+"18011","Boone County",15,2,366
+"18019","Clark County",4,1,20
+"18027","Daviess County",1,1,55
+"18031","Decatur County",6,1,42
+"18053","Grant County",3,1,63
+"18057","Hamilton County",8,4,432
+"18059","Hancock County",3,1,144
+"18065","Henry County",7,1,136
+"18085","Kosciusko County",1,1,80
+"18089","Lake County",66,2,1692
+"18091","LaPorte County",2,1,53
+"18097","Marion County",44,6,809
+"18109","Morgan County",4,1,24
+"18135","Randolph County",3,1,80
+"18141","St. Joseph County",1,1,48
+"18145","Shelby County",9,2,87
+"18159","Tipton County",0,0,36
+"18169","Wabash County",1,1,30
+"18181","White County",0,0,6
+"19013","Black Hawk County",1,1,26
+"19019","Buchanan County",4,1,13
+"19045","Clinton County",3,0,122
+"19049","Dallas County",2,1,48
+"19099","Jasper County",1,1,41
+"19103","Johnson County",1,1,12
+"19113","Linn County",6,2,100
+"19153","Polk County",6,1,263
+"19157","Poweshiek County",1,1,48
+"19167","Sioux County",3,1,55
+"19169","Story County",0,0,130
+"20001","Allen County",1,1,15
+"20015","Butler County",3,1,83
+"20037","Crawford County",2,1,53
+"20045","Douglas County",10,1,38
+"20055","Finney County",9,1,54
+"20077","Harper County",4,1,148
+"20091","Johnson County",4,2,126
+"20113","McPherson County",1,1,20
+"20173","Sedgwick County",13,4,230
+"20177","Shawnee County",21,6,746
+"20181","Sherman County",3,1,60
+"21015","Boone County",1,1,47
+"21025","Breathitt County",6,1,32
+"21067","Fayette County",5,3,160
+"21089","Greenup County",1,1,63
+"21093","Hardin County",1,1,25
+"21111","Jefferson County",35,3,457
+"21113","Jessamine County",15,5,289
+"21117","Kenton County",5,1,31
+"21157","Marshall County",3,1,91
+"21193","Perry County",4,1,67
+"21209","Scott County",2,1,95
+"21231","Wayne County",0,1,0
+"22005","Ascension Parish",4,1,126
+"22019","Calcasieu Parish",7,1,195
+"22033","East Baton Rouge Parish",24,3,509
+"22051","Jefferson Parish",8,5,192
+"22055","Lafayette Parish",11,4,513
+"22069","Natchitoches Parish",17,1,121
+"22071","Orleans Parish",21,6,374
+"22079","Rapides Parish",5,1,52
+"22087","St. Bernard Parish",2,0,83
+"22089","St. Charles Parish",1,1,16
+"22095","St. John The Baptist Parish",3,1,13
+"23001","Androscoggin County",2,1,38
+"23003","Aroostook County",2,1,30
+"23005","Cumberland County",44,5,551
+"23007","Franklin County",1,1,14
+"23009","Hancock County",4,1,21
+"23011","Kennebec County",3,2,49
+"23013","Knox County",2,1,74
+"23015","Lincoln County",2,1,6
+"23017","Oxford County",1,1,15
+"23019","Penobscot County",4,1,69
+"23023","Sagadahoc County",3,1,38
+"23031","York County",11,5,255
+"24003","Anne Arundel County",40,11,1127
+"24009","Calvert County",0,1,0
+"24021","Frederick County",0,1,48
+"24027","Howard County",1,1,52
+"24031","Montgomery County",44,14,988
+"24033","Prince George'S County",16,3,400
+"24035","Queen Anne'S County",5,1,12
+"24037","St. Mary'S County",1,1,55
+"24510","Baltimore County",48,4,339
+"25001","Barnstable County",11,4,261
+"25003","Berkshire County",25,5,279
+"25005","Bristol County",47,10,825
+"25009","Essex County",223,41,3483
+"25011","Franklin County",37,4,435
+"25013","Hampden County",22,5,497
+"25015","Hampshire County",1,1,12
+"25017","Middlesex County",289,54,3949
+"25021","Norfolk County",183,31,3033
+"25023","Plymouth County",49,12,1170
+"25025","Suffolk County",242,35,4340
+"25027","Worcester County",116,18,1883
+"26005","Allegan County",1,1,39
+"26017","Bay County",0,1,96
+"26021","Berrien County",11,2,501
+"26023","Branch County",3,1,45
+"26035","Clare County",2,1,180
+"26041","Delta County",1,1,43
+"26045","Eaton County",0,1,48
+"26049","Genesee County",3,1,67
+"26065","Ingham County",2,2,73
+"26077","Kalamazoo County",6,1,262
+"26081","Kent County",28,3,649
+"26093","Livingston County",1,1,40
+"26099","Macomb County",4,2,195
+"26125","Oakland County",29,7,456
+"26129","Ogemaw County",1,1,95
+"26139","Ottawa County",4,2,88
+"26145","Saginaw County",2,1,114
+"26147","St. Clair County",5,1,86
+"26161","Washtenaw County",63,6,1332
+"26163","Wayne County",23,5,929
+"27003","Anoka County",1,1,10
+"27009","Benton County",7,2,310
+"27013","Blue Earth County",20,1,360
+"27021","Cass County",16,2,201
+"27027","Clay County",1,1,105
+"27037","Dakota County",4,2,236
+"27053","Hennepin County",33,5,512
+"27061","Itasca County",1,1,48
+"27095","Mille Lacs County",3,2,90
+"27123","Ramsey County",15,4,102
+"27139","Scott County",7,3,290
+"27145","Stearns County",8,1,121
+"27163","Washington County",3,1,90
+"27169","Winona County",15,2,243
+"28021","Claiborne County",3,1,41
+"28059","Jackson County",19,4,448
+"28069","Kemper County",13,1,49
+"28075","Lauderdale County",4,1,220
+"28085","Lincoln County",2,1,65
+"28089","Madison County",23,5,527
+"28095","Monroe County",3,1,73
+"28153","Wayne County",4,2,96
+"29019","Boone County",10,4,276
+"29027","Callaway County",5,1,176
+"29047","Clay County",1,1,80
+"29075","Gentry County",0,0,25
+"29077","Greene County",3,1,119
+"29095","Jackson County",6,4,176
+"29097","Jasper County",11,2,366
+"29099","Jefferson County",30,4,497
+"29145","Newton County",2,1,93
+"29153","Ozark County",0,0,52
+"29163","Pike County",2,1,103
+"29167","Polk County",0,0,30
+"29169","Pulaski County",4,1,240
+"29183","St. Charles County",2,1,11
+"29189","St. Louis County",31,9,542
+"29199","Scotland County",3,1,4
+"29215","Texas County",1,1,77
+"29510","St. Louis County",3,1,62
+"30013","Cascade County",1,1,43
+"30029","Flathead County",3,1,75
+"30031","Gallatin County",2,1,48
+"30049","Lewis And Clark County",67,6,1096
+"30063","Missoula County",7,2,57
+"30087","Rosebud County",3,1,83
+"30111","Yellowstone County",0,0,49
+"31025","Cass County",4,1,93
+"31055","Douglas County",17,4,313
+"31109","Lancaster County",14,4,287
+"31153","Sarpy County",13,2,129
+"31157","Scotts Bluff County",4,1,43
+"32003","Clark County",52,12,1816
+"32005","Douglas County",5,1,153
+"33001","Belknap County",8,3,176
+"33005","Cheshire County",10,1,108
+"33009","Grafton County",148,10,1335
+"33011","Hillsborough County",29,4,325
+"33013","Merrimack County",13,2,153
+"33015","Rockingham County",25,5,438
+"33017","Strafford County",2,1,43
+"33019","Sullivan County",21,1,114
+"34001","Atlantic County",9,2,223
+"34003","Bergen County",239,22,3613
+"34005","Burlington County",22,3,168
+"34007","Camden County",5,3,128
+"34011","Cumberland County",5,1,155
+"34013","Essex County",57,12,1284
+"34017","Hudson County",12,4,442
+"34021","Mercer County",26,6,415
+"34023","Middlesex County",32,7,659
+"34025","Monmouth County",51,14,1026
+"34027","Morris County",25,7,643
+"34029","Ocean County",7,1,21
+"34031","Passaic County",10,3,320
+"34035","Somerset County",42,6,601
+"34037","Sussex County",1,1,20
+"34039","Union County",28,8,647
+"34041","Warren County",8,2,156
+"35001","Bernalillo County",49,8,826
+"35013","DoñA Ana County",8,1,198
+"35028","Los Alamos County",6,1,117
+"35043","Sandoval County",2,1,20
+"35049","Santa Fe County",10,3,362
+"35061","Valencia County",4,2,185
+"36001","Albany County",9,5,470
+"36005","Bronx County",46,12,697
+"36007","Broome County",0,0,14
+"36013","Chautauqua County",41,2,313
+"36027","Dutchess County",4,2,191
+"36029","Erie County",78,10,1602
+"36039","Greene County",1,1,39
+"36043","Herkimer County",2,1,70
+"36047","Kings County",28,7,845
+"36053","Madison County",5,0,19
+"36055","Monroe County",4,3,191
+"36059","Nassau County",55,18,1644
+"36061","New York County",214,31,3521
+"36067","Onondaga County",11,4,172
+"36071","Orange County",8,2,102
+"36073","Orleans County",1,1,43
+"36077","Otsego County",2,1,48
+"36081","Queens County",7,4,149
+"36083","Rensselaer County",5,2,83
+"36085","Richmond County",6,1,37
+"36091","Saratoga County",7,2,189
+"36103","Suffolk County",47,12,945
+"36105","Sullivan County",6,1,43
+"36107","Tioga County",2,1,84
+"36109","Tompkins County",2,1,78
+"36111","Ulster County",20,3,322
+"36119","Westchester County",52,16,1079
+"36121","Wyoming County",1,1,18
+"37001","Alamance County",21,2,263
+"37003","Alexander County",1,1,35
+"37017","Bladen County",3,1,86
+"37019","Brunswick County",3,1,97
+"37021","Buncombe County",1,1,16
+"37025","Cabarrus County",49,8,488
+"37035","Catawba County",8,3,100
+"37037","Chatham County",0,0,62
+"37049","Craven County",2,1,19
+"37051","Cumberland County",10,1,267
+"37057","Davidson County",10,1,69
+"37063","Durham County",60,11,1095
+"37065","Edgecombe County",3,1,96
+"37067","Forsyth County",20,6,449
+"37069","Franklin County",19,1,75
+"37071","Gaston County",26,1,314
+"37077","Granville County",8,1,204
+"37081","Guilford County",1,1,27
+"37085","Harnett County",2,2,94
+"37089","Henderson County",2,1,49
+"37093","Hoke County",4,2,92
+"37097","Iredell County",3,2,114
+"37107","Lenoir County",5,3,171
+"37109","Lincoln County",1,1,30
+"37111","McDowell County",15,2,180
+"37119","Mecklenburg County",50,11,978
+"37125","Moore County",2,1,99
+"37127","Nash County",2,1,46
+"37129","New Hanover County",8,3,119
+"37133","Onslow County",2,1,75
+"37135","Orange County",4,2,92
+"37139","Pasquotank County",3,1,98
+"37151","Randolph County",2,1,57
+"37159","Rowan County",10,1,137
+"37165","Scotland County",1,1,91
+"37167","Stanly County",2,1,43
+"37171","Surry County",2,1,42
+"37179","Union County",3,1,165
+"37183","Wake County",45,10,1176
+"38017","Cass County",2,1,74
+"38043","Kidder County",8,1,145
+"38089","Stark County",6,1,140
+"39013","Belmont County",0,0,29
+"39015","Brown County",2,1,59
+"39017","Butler County",4,0,58
+"39021","Champaign County",5,0,110
+"39023","Clark County",1,1,60
+"39029","Columbiana County",9,1,21
+"39035","Cuyahoga County",30,12,854
+"39041","Delaware County",2,1,155
+"39043","Erie County",10,2,298
+"39045","Fairfield County",5,1,106
+"39049","Franklin County",16,8,643
+"39055","Geauga County",2,2,115
+"39061","Hamilton County",35,8,663
+"39081","Jefferson County",0,0,48
+"39093","Lorain County",8,2,77
+"39099","Mahoning County",3,1,147
+"39101","Marion County",6,1,222
+"39103","Medina County",2,1,55
+"39107","Mercer County",14,2,123
+"39113","Montgomery County",2,2,121
+"39121","Noble County",23,7,963
+"39127","Perry County",4,1,67
+"39149","Shelby County",0,0,10
+"39151","Stark County",1,0,48
+"39153","Summit County",14,3,282
+"39161","Van Wert County",2,1,68
+"40009","Beckham County",1,1,43
+"40027","Cleveland County",1,1,108
+"40087","McClain County",1,1,70
+"40101","Muskogee County",2,1,16
+"40109","Oklahoma County",5,4,107
+"40115","Ottawa County",2,1,37
+"40131","Rogers County",1,1,21
+"40143","Tulsa County",4,2,154
+"41001","Baker County",23,1,162
+"41011","Coos County",65,3,1172
+"41015","Curry County",7,1,96
+"41017","Deschutes County",4,1,149
+"41019","Douglas County",4,1,55
+"41029","Jackson County",66,4,268
+"41033","Josephine County",13,4,357
+"41035","Klamath County",22,4,746
+"41037","Lake County",3,1,11
+"41039","Lane County",19,4,230
+"41047","Marion County",12,2,167
+"41051","Multnomah County",13,5,302
+"41053","Polk County",1,1,43
+"41061","Union County",7,3,248
+"41067","Washington County",25,7,820
+"41071","Yamhill County",2,1,88
+"42001","Adams County",5,2,134
+"42003","Allegheny County",93,12,1185
+"42007","Beaver County",2,1,69
+"42017","Bucks County",7,3,33
+"42019","Butler County",3,2,135
+"42029","Chester County",18,10,636
+"42041","Cumberland County",7,3,330
+"42043","Dauphin County",4,2,152
+"42045","Delaware County",68,10,770
+"42049","Erie County",17,3,282
+"42051","Fayette County",39,1,441
+"42063","Indiana County",5,1,64
+"42069","Lackawanna County",2,1,18
+"42071","Lancaster County",4,2,116
+"42079","Luzerne County",0,1,0
+"42089","Monroe County",1,1,48
+"42091","Montgomery County",355,20,2005
+"42095","Northampton County",7,3,196
+"42101","Philadelphia County",104,21,2727
+"42107","Schuylkill County",2,1,114
+"42109","Snyder County",3,1,12
+"42115","Susquehanna County",3,2,127
+"42123","Warren County",4,1,72
+"42129","Westmoreland County",18,2,271
+"42133","York County",3,2,92
+"44001","Bristol County",10,2,179
+"44003","Kent County",2,2,70
+"44005","Newport County",5,1,97
+"44007","Providence County",51,11,846
+"44009","Washington County",3,1,265
+"45007","Anderson County",5,1,38
+"45013","Beaufort County",2,1,72
+"45019","Charleston County",22,5,475
+"45031","Darlington County",3,2,36
+"45035","Dorchester County",2,1,120
+"45041","Florence County",3,1,105
+"45043","Georgetown County",3,2,75
+"45045","Greenville County",3,2,54
+"45047","Greenwood County",2,1,100
+"45053","Jasper County",5,1,77
+"45063","Lexington County",20,3,549
+"45079","Richland County",33,6,747
+"45083","Spartanburg County",2,1,90
+"46081","Lawrence County",15,2,249
+"46083","Lincoln County",14,1,218
+"47001","Anderson County",1,1,17
+"47037","Davidson County",14,3,173
+"47045","Dyer County",1,1,58
+"47053","Gibson County",1,1,54
+"47059","Greene County",3,1,48
+"47063","Hamblen County",1,1,70
+"47065","Hamilton County",9,3,248
+"47091","Johnson County",1,1,25
+"47093","Knox County",10,3,231
+"47119","Maury County",2,2,61
+"47125","Montgomery County",5,1,12
+"47141","Putnam County",10,1,74
+"47149","Rutherford County",1,1,79
+"47157","Shelby County",2,3,142
+"47179","Washington County",7,2,258
+"47187","Williamson County",39,3,447
+"48001","Anderson County",2,1,121
+"48027","Bell County",10,2,92
+"48029","Bexar County",51,7,873
+"48039","Brazoria County",2,2,76
+"48041","Brazos County",2,1,24
+"48051","Burleson County",1,1,5
+"48061","Cameron County",41,5,1266
+"48085","Collin County",38,10,1378
+"48091","Comal County",1,1,12
+"48113","Dallas County",72,21,1358
+"48123","DeWitt County",8,1,35
+"48131","Duval County",3,1,133
+"48141","El Paso County",17,5,426
+"48157","Fort Bend County",29,6,842
+"48181","Grayson County",3,1,102
+"48183","Gregg County",1,1,12
+"48201","Harris County",378,29,3659
+"48209","Hays County",7,2,138
+"48215","Hidalgo County",5,2,344
+"48257","Kaufman County",11,3,162
+"48303","Lubbock County",10,3,376
+"48309","McLennan County",6,1,108
+"48325","Medina County",2,1,83
+"48339","Montgomery County",27,6,747
+"48349","Navarro County",2,1,32
+"48355","Nueces County",0,1,96
+"48375","Potter County",12,2,344
+"48381","Randall County",1,1,43
+"48397","Rockwall County",3,2,153
+"48437","Swisher County",8,1,135
+"48439","Tarrant County",50,6,619
+"48453","Travis County",7,3,180
+"48457","Tyler County",2,1,40
+"48469","Victoria County",1,1,113
+"48479","Webb County",2,1,48
+"48481","Wharton County",1,1,48
+"48485","Wichita County",6,1,81
+"48491","Williamson County",3,2,92
+"49003","Box Elder County",1,1,65
+"49011","Davis County",18,5,834
+"49035","Salt Lake County",37,10,1158
+"49037","San Juan County",6,1,88
+"49047","Uintah County",1,1,43
+"49049","Utah County",63,7,980
+"49053","Washington County",1,1,15
+"49057","Weber County",5,1,278
+"50007","Chittenden County",1,1,43
+"50015","Lamoille County",4,1,18
+"50017","Orange County",8,1,22
+"50019","Orleans County",4,1,51
+"50023","Washington County",8,2,66
+"50025","Windham County",4,2,100
+"51003","Albemarle County",1,1,48
+"51041","Chesterfield County",7,2,211
+"51043","Clarke County",4,0,168
+"51059","Fairfax County",77,17,2710
+"51061","Fauquier County",5,2,117
+"51065","Fluvanna County",1,1,35
+"51067","Franklin County",23,3,336
+"51087","Henrico County",32,8,992
+"51095","James City County",1,1,50
+"51097","King and Queen County",3,1,86
+"51099","King George County",1,1,32
+"51107","Loudoun County",19,10,573
+"51109","Louisa County",7,2,133
+"51139","Page County",1,1,34
+"51143","Pittsylvania County",1,1,55
+"51145","Powhatan County",1,1,28
+"51153","Prince William County",16,6,523
+"51161","Roanoke County",1,1,48
+"51177","Spotsylvania County",1,1,150
+"51179","Stafford County",12,3,449
+"51195","Wise County",0,1,96
+"51199","York County",11,1,240
+"51510","Alexandria County",19,5,242
+"51590","Danville County",1,1,43
+"51610","Falls Church County",9,3,496
+"51660","Harrisonburg County",7,1,112
+"51680","Lynchburg County",15,1,12
+"51700","Newport News County",2,2,61
+"51760","Richmond County",2,2,128
+"51800","Suffolk County",3,1,84
+"51810","Virginia Beach County",7,1,102
+"51840","Winchester County",1,1,48
+"53001","Adams County",18,1,68
+"53005","Benton County",3,3,82
+"53009","Clallam County",2,1,100
+"53011","Clark County",10,3,255
+"53015","Cowlitz County",15,2,270
+"53033","King County",91,25,2133
+"53035","Kitsap County",7,3,242
+"53037","Kittitas County",3,1,5
+"53043","Lincoln County",1,1,32
+"53045","Mason County",5,2,190
+"53047","Okanogan County",15,3,181
+"53051","Pend Oreille County",4,1,51
+"53053","Pierce County",23,5,570
+"53061","Snohomish County",15,3,373
+"53063","Spokane County",8,7,258
+"53065","Stevens County",28,2,214
+"53067","Thurston County",6,5,202
+"53071","Walla Walla County",5,1,18
+"53073","Whatcom County",2,1,150
+"53075","Whitman County",29,2,687
+"53077","Yakima County",1,1,120
+"54003","Berkeley County",1,1,38
+"54039","Kanawha County",15,2,378
+"54057","Mineral County",2,1,62
+"54061","Monongalia County",1,1,54
+"54081","Raleigh County",2,1,57
+"54099","Wayne County",6,1,17
+"54103","Wetzel County",0,0,10
+"55009","Brown County",6,1,230
+"55017","Chippewa County",2,1,28
+"55023","Crawford County",1,1,55
+"55025","Dane County",26,5,601
+"55027","Dodge County",4,2,57
+"55029","Door County",2,2,86
+"55063","La Crosse County",3,1,40
+"55071","Manitowoc County",9,1,169
+"55073","Marathon County",11,3,193
+"55079","Milwaukee County",26,8,982
+"55087","Outagamie County",2,2,51
+"55093","Pierce County",0,1,96
+"55101","Racine County",2,1,94
+"55105","Rock County",7,3,245
+"55109","St. Croix County",25,4,466
+"55115","Shawano County",2,1,96
+"55133","Waukesha County",33,8,456
+"55135","Waupaca County",4,1,157
+"55141","Wood County",6,1,88
+"56001","Albany County",8,2,190
+"56021","Laramie County",1,1,40
+"56025","Natrona County",1,1,48
+"56027","Niobrara County",4,1,50
+"56029","Park County",1,1,1
+"56033","Sheridan County",1,1,2
+"56039","Teton County",7,1,75
+"69110","Saipan Municipality",26,2,241
