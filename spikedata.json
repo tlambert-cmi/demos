@@ -1,0 +1,17 @@
+{
+  "us": {
+    "type": "Topology",
+    "objects": {
+      "nation": { /* Nation geometry */ },
+      "states": { /* State geometry */ },
+      "counties": { /* County geometry */ }
+    },
+    "arcs": [/* Arc data */],
+    "transform": { /* Transform data */ }
+  },
+  "population": [
+    { "state": "13", "fips": "13213", "population": 39358 },
+    { "state": "13", "fips": "13215", "population": 200303 },
+    // more population data...
+  ]
+}
