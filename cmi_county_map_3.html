@@ -45,7 +45,7 @@
 <body>
     <!-- Button container to switch between columns -->
     <div class="button-container">
-        <button class="map-button active" id="value1-btn">Value 1 (Maroon)</button>
+        <button class="map-button active" id="value1-btn">Updated</button>
         <button class="map-button" id="value2-btn">Value 2 (Green)</button>
         <button class="map-button" id="value3-btn">Value 3 (Purple)</button>
     </div>
@@ -77,13 +77,14 @@
         var currentColumn = "value1";  // Default column to be displayed
         var color = d3.scaleQuantize().range(maroonColors); // Default color range (maroon)
 
+        // Create zoom behavior
         var zoom = d3.zoom()
-            .scaleExtent([1, 8])  // Allow zooming in up to 8x
+            .scaleExtent([1, 8])
             .on("zoom", zoomed);
 
         svg.call(zoom);
 
-        var active = d3.select(null); // Keep track of the currently zoomed-in state
+        var active = d3.select(null);
 
         // Load the county boundaries GeoJSON (US counties in TopoJSON format)
         d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
@@ -120,7 +121,7 @@
                    .attr("class", "state")
                    .attr("d", path)
                    .attr("cursor", "pointer")
-                   .on("click", clicked); // Add the click event to zoom
+                   .on("click", clicked);
 
                 // Function to update the map based on the selected column and color scale
                 function updateMap(column, colorRange) {
@@ -178,14 +179,13 @@
 
                 // Function to handle zoom when a state is clicked
                 function clicked(event, d) {
-                    if (active.node() === this) return reset(); // If the clicked state is already active, reset
+                    if (active.node() === this) return reset();
 
-                    active.classed("active", false);  // Deactivate previous state
-                    active = d3.select(this).classed("active", true);  // Set the clicked state as active
+                    active.classed("active", false);
+                    active = d3.select(this).classed("active", true);
 
-                    var [[x0, y0], [x1, y1]] = path.bounds(d);  // Get the bounds of the state
+                    var [[x0, y0], [x1, y1]] = path.bounds(d);
 
-                    // Zoom into the state
                     svg.transition().duration(750).call(
                         zoom.transform,
                         d3.zoomIdentity
@@ -194,7 +194,6 @@
                             .translate(-(x0 + x1) / 2, -(y0 + y1) / 2)
                     );
 
-                    // Hide other states during zoom
                     states.style("opacity", function(s) {
                         return s === d ? 1 : 0;  // Only the clicked state is fully visible
                     });
@@ -202,10 +201,10 @@
 
                 // Function to reset the zoom and bring back all states
                 function reset() {
-                    active.classed("active", false);  // Deactivate active state
-                    active = d3.select(null);  // Clear the active state
+                    active.classed("active", false);
+                    active = d3.select(null);
 
-                    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);  // Reset the zoom
+                    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
                     states.style("opacity", 1);  // Bring back all states
                 }
 
