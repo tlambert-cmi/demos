@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Double Histogram</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        .legend-text {
+            font-size: 12px;
+            fill: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dropdown for selecting the series -->
+    <label for="dataSeries">Select a dataset:</label>
+    <select id="dataSeries">
+        <option value="value1">Dataset 1</option>
+        <option value="value2">Dataset 2</option>
+        <option value="value3">Dataset 3</option>
+        <option value="value4">Dataset 4</option>
+        <option value="value5">Dataset 5</option>
+        <option value="value6">Dataset 6</option>
+    </select>
+
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+
+    <script>
+        // Set the dimensions and margins of the graph
+        var margin = {top: 10, right: 30, bottom: 80, left: 40}, 
+            width = 460 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
+
+        // Append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+          .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // X axis scale
+        var x = d3.scaleLinear()
+            .domain([-4, 9])
+            .range([0, width]);
+
+        // Y axis scale
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+
+        // Add the X-axis
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        // Add the Y-axis
+        var yAxis = svg.append("g");
+
+        // Load the data
+        d3.csv("sample_histogram_data.csv", function(data) {
+        
+            console.log(data);  // This will log the data to the console
+            
+            // Function to update the chart
+            function updateChart(selectedColumn) {
+                // Filter and bin the data for the selected column
+                var bins1 = d3.histogram()
+                    .value(function(d) { return +d[selectedColumn]; })
+                    .domain(x.domain())
+                    .thresholds(x.ticks(40))(data.filter(function(d) { return d.type === "variable 1"; }));
+                
+                var bins2 = d3.histogram()
+                    .value(function(d) { return +d[selectedColumn]; })
+                    .domain(x.domain())
+                    .thresholds(x.ticks(40))(data.filter(function(d) { return d.type === "variable 2"; }));
+
+                // Set Y axis domain based on the maximum count
+                y.domain([0, Math.max(
+                    d3.max(bins1, function(d) { return d.length; }),
+                    d3.max(bins2, function(d) { return d.length; })
+                )]);
+
+                yAxis.transition().call(d3.axisLeft(y).ticks(10));
+
+                // Remove existing bars
+                svg.selectAll(".bar1").remove();
+                svg.selectAll(".bar2").remove();
+
+                // Add bars for series 1
+                svg.selectAll(".bar1")
+                    .data(bins1)
+                    .enter()
+                    .append("rect")
+                      .attr("class", "bar1")
+                      .attr("x", function(d) { return x(d.x0); })
+                      .attr("transform", function(d) { return "translate(0," + y(d.length) + ")"; })
+                      .attr("width", function(d) { return x(d.x1) - x(d.x0) - 1; })
+                      .attr("height", function(d) { return height - y(d.length); })
+                      .style("fill", "#69b3a2")
+                      .style("opacity", 0.6);
+
+                // Add bars for series 2
+                svg.selectAll(".bar2")
+                    .data(bins2)
+                    .enter()
+                    .append("rect")
+                      .attr("class", "bar2")
+                      .attr("x", function(d) { return x(d.x0); })
+                      .attr("transform", function(d) { return "translate(0," + y(d.length) + ")"; })
+                      .attr("width", function(d) { return x(d.x1) - x(d.x0) - 1; })
+                      .attr("height", function(d) { return height - y(d.length); })
+                      .style("fill", "#404080")
+                      .style("opacity", 0.6);
+            }
+
+            // Initialize the chart with the first dataset
+            updateChart("value1");
+
+            // When the user changes the dropdown selection, update the chart
+            d3.select("#dataSeries").on("change", function() {
+                var selectedColumn = d3.select(this).property("value");
+                updateChart(selectedColumn);
+            });
+        });
+
+    </script>
+</body>
+</html>
