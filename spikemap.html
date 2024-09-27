@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spike Map</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .chart-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plot@0.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson@3"></script>
+</head>
+<body>
+
+<div class="chart-container">
+  <h2>Spike Map of Population Data</h2>
+  <div id="spike-map"></div>
+</div>
+
+<script>
+  // Load the data (replace 'spikedata.json' with your actual data source)
+  d3.json('spikedata.json').then(function(spikedata) {
+
+    // Assuming spikedata contains the population array and topojson `us` object
+
+    // Extract the necessary geo objects (nation, state mesh, and counties)
+    const us = spikedata.us;
+    const nation = topojson.feature(us, us.objects.nation);
+    const statemesh = topojson.mesh(us, us.objects.states, (a, b) => a !== b);
+    const countymap = new Map(topojson.feature(us, us.objects.counties).features.map(d => [d.id, d]));
+
+    // Define the spike function
+    const spike = (length, width = 7) => `M${-width / 2},0L0,${-length}L${width / 2},0`;
+
+    // Plot the spike map
+    Plot.plot({
+      width: 975,
+      projection: "identity", // No geographic projection as data is already projected
+      length: { range: [0, 200] },  // Length scale for spikes
+      marks: [
+        // Draw the nation background
+        Plot.geo(nation, { fill: "#eee" }),
+        // Draw state borders
+        Plot.geo(statemesh, { stroke: "white" }),
+        // Draw spikes for each county
+        Plot.spike(spikedata.population, 
+          Plot.centroid({ 
+            length: "population",  // Use population data to scale the spikes
+            geometry: ({ fips }) => countymap.get(fips)  // Retrieve county geometry by FIPS code
+          })
+        )
+      ]
+    }).then(chart => {
+      // Append the chart to the container
+      document.getElementById("spike-map").appendChild(chart);
+    });
+
+  });
+</script>
+
+</body>
+</html>
