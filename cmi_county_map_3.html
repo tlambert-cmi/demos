@@ -1,219 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Choropleth Map with Zoom</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <script src="https://unpkg.com/topojson@3"></script>
-    <style>
-        .county {
-            stroke: #fff;
-            stroke-width: 0.5px;
-        }
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style type="text/css">
 
-        /* Tooltip styling */
-        .tooltip {
-            position: absolute;
-            background-color: white;
-            border: 1px solid #999;
-            padding: 10px;
-            font-size: 12px;
-            color: #333;
-            border-radius: 4px;
-            pointer-events: none;
-            opacity: 0; /* Initially hidden */
-            transition: opacity 0.2s;
+        body {
+            font: 11px sans-serif;
+            background-color: #ffffff;
         }
-
-        /* Style for the buttons */
-        .button-container {
-            margin: 10px;
-        }
-        .map-button {
-            padding: 10px 15px;
-            margin-right: 10px;
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .map-button.active {
-            background-color: #343a40;
-        }
+        
     </style>
 </head>
+
 <body>
-    <!-- Button container to switch between columns -->
-    <div class="button-container">
-        <button class="map-button active" id="value1-btn">Updated</button>
-        <button class="map-button" id="value2-btn">Value 2 (Green)</button>
-        <button class="map-button" id="value3-btn">Value 3 (Purple)</button>
-    </div>
 
-    <svg width="960" height="600"></svg>
-    
-    <!-- Tooltip container -->
-    <div class="tooltip"></div>
+    <div id="usamap"></div>
+    <p><>
 
-    <script>
-        // Width and height of the SVG
-        var width = 960, height = 600;
+    <script type="text/javascript">
+        var margin_choropleth = {
+                top: 10,
+                left: 10,
+                bottom: 10,
+                right: 10
+            },
+            width_choropleth = 857,
+            width_choropleth = width_choropleth - margin_choropleth.left - margin_choropleth.right,
+            mapRatio = .5,
+            height_choropleth = width_choropleth * mapRatio;
 
-        // Create an SVG element
-        var svg = d3.select("svg");
+        // D3 Projection
+        var projection = d3.geoAlbersUsa()
+            .scale(width_choropleth)
+            .translate([width_choropleth / 2, height_choropleth / 2]);
 
-        // Define a projection and a path generator
-        var projection = d3.geoAlbersUsa().scale(1280).translate([width / 2, height / 2]);
-        var path = d3.geoPath().projection(projection);
+        // Define path generator
+        var path = d3.geoPath()
+            .projection(projection);
 
-        // Define updated color ranges for each column (excluding lightest and darkest colors)
-        var maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
-        var greenColors = ["#e5f5e0", "#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c"];
-        var purpleColors = ["#efedf5", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#54278f"];
+        var viewboxwidth = width_choropleth * 1;
+        var viewboxheight = height_choropleth - 20;
 
-        // Tooltip setup
-        var tooltip = d3.select(".tooltip");
+        d3.json("us-states.json", function(json) {
+            var centered;
+            var formatComma = d3.format(',');
+            var fill = d3.scaleLog()
+                .domain([10, 500])
+                .range(["brown", "steelblue"]);
 
-        var currentColumn = "value1";  // Default column to be displayed
-        var color = d3.scaleQuantize().range(maroonColors); // Default color range (maroon)
+            var svg_choropleth = d3.select("#usamap")
+                .append("svg")
+                .attr("preserveAspectRatio", "xMidYMid meet")
+                .attr("viewBox", "0 0 " + viewboxwidth + " " + viewboxheight + "");
 
-        // Create zoom behavior
-        var zoom = d3.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", zoomed);
+            var map = svg_choropleth.append("g")
+                .attr("id", "states")
+                .selectAll("path")
+                .data(json.features)
+                .enter()
+                .append("path")
+                .attr("d", path)
+                .style("stroke", "#fff")
+                .style("stroke-width", "0.1")
+                .style("fill", function(d) {
+                    return fill(path.area(d));
+                })
+                .on("click", clicked);
 
-        svg.call(zoom);
+            svg_choropleth.append("g")
+                .attr("class", "states-names")
+                .selectAll("text")
+                .data(json.features)
+                .enter()
+                .append("svg:text")
+                .text(function(d) {
+                    return d.id;
+                })
+                .attr("x", function(d) {
+                    return path.centroid(d)[0];
+                })
+                .attr("y", function(d) {
+                    return path.centroid(d)[1];
+                })
+                .attr("text-anchor", "middle")
+                .attr("fill", "white");
 
-        var active = d3.select(null);
 
-        // Load the county boundaries GeoJSON (US counties in TopoJSON format)
-        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
+            function clicked(d) {
 
-            // Load the data from the CSV file
-            d3.csv("schools_2.csv").then(function(data) {
+                var x, y, k;
 
-                // Create a map of the data by FIPS code for easier access
-                var dataByFIPS = {};
-                data.forEach(function(d) {
-                    dataByFIPS[d.FIPS] = {
-                        value1: +d.value1,  // Column 1
-                        value2: +d.value2,  // Column 2
-                        value3: +d.value3,  // Column 3
-                        county: d.County    // County name
-                    };
-                });
+                if (d && centered !== d) {
+                    var centroid = path.centroid(d);
+                    x = centroid[0];
+                    y = centroid[1];
+                    k = 4;
+                    centered = d;
 
-                // Draw counties
-                var counties = svg.append("g")
-                   .attr("class", "counties")
-                   .selectAll("path")
-                   .data(topojson.feature(us, us.objects.counties).features)
-                   .enter().append("path")
-                   .attr("class", "county")
-                   .attr("d", path);
+                } else {
+                    x = viewboxwidth / 2;
+                    y = viewboxheight / 2;
+                    k = 1;
+                    centered = null;
+                }
 
-                // Add state borders
-                var states = svg.append("g")
-                   .attr("class", "states")
-                   .selectAll("path")
-                   .data(topojson.feature(us, us.objects.states).features)
-                   .enter().append("path")
-                   .attr("class", "state")
-                   .attr("d", path)
-                   .attr("cursor", "pointer")
-                   .on("click", clicked);
-
-                // Function to update the map based on the selected column and color scale
-                function updateMap(column, colorRange) {
-                    currentColumn = column;
-
-                    // Update the color domain and color range
-                    var minValue = d3.min(data, d => +d[column]);
-                    var maxValue = d3.max(data, d => +d[column]);
-                    color.domain([minValue, maxValue]).range(colorRange);  // Dynamically set domain and color range
-
-                    // Update county colors and tooltips
-                    counties.attr("fill", function(d) {
-                       var fips = d.id;
-                       var countyData = dataByFIPS[fips];
-                       return countyData ? color(countyData[column]) : "#ccc"; // Gray for missing data
-                    })
-                    .on("mouseover", function(event, d) {
-                        var fips = d.id;
-                        var countyData = dataByFIPS[fips];
-                        if (countyData) {
-                            var value = countyData[column] || "No data";
-                            var county = countyData.county || "Unknown county";
-                            tooltip.transition().duration(200).style("opacity", 1);
-                            tooltip.html("FIPS: " + fips + "<br>County: " + county + "<br>Value: " + value)
-                                   .style("left", (event.pageX + 10) + "px")
-                                   .style("top", (event.pageY - 30) + "px");
-                        }
-                    })
-                    .on("mouseout", function() {
-                        tooltip.transition().duration(200).style("opacity", 0);
+                map.selectAll('path')
+                    .classed('active', centered && function(d) {
+                        return d === centered;
                     });
-                }
 
-                // Initial map update with default column and color (Value 1 - Maroon)
-                updateMap(currentColumn, maroonColors);
+                map.transition()
+                    .duration(750)
+                    .attr('transform', 'translate(' + viewboxwidth / 2 + ',' + viewboxheight / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')');
 
-                // Button click handlers to update the map with different columns and color schemes
-                d3.select("#value1-btn").on("click", function() {
-                    updateMap("value1", maroonColors);
-                    d3.selectAll(".map-button").classed("active", false);
-                    d3.select(this).classed("active", true);
-                });
-
-                d3.select("#value2-btn").on("click", function() {
-                    updateMap("value2", greenColors);
-                    d3.selectAll(".map-button").classed("active", false);
-                    d3.select(this).classed("active", true);
-                });
-
-                d3.select("#value3-btn").on("click", function() {
-                    updateMap("value3", purpleColors);
-                    d3.selectAll(".map-button").classed("active", false);
-                    d3.select(this).classed("active", true);
-                });
-
-                // Function to handle zoom when a state is clicked
-                function clicked(event, d) {
-                    if (active.node() === this) return reset();
-
-                    active.classed("active", false);
-                    active = d3.select(this).classed("active", true);
-
-                    var [[x0, y0], [x1, y1]] = path.bounds(d);
-
-                    svg.transition().duration(750).call(
-                        zoom.transform,
-                        d3.zoomIdentity
-                            .translate(width / 2, height / 2)
-                            .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
-                            .translate(-(x0 + x1) / 2, -(y0 + y1) / 2)
-                    );
-
-                    states.style("opacity", function(s) {
-                        return s === d ? 1 : 0;  // Only the clicked state is fully visible
-                    });
-                }
-
-                // Function to reset the zoom and bring back all states
-                function reset() {
-                    active.classed("active", false);
-                    active = d3.select(null);
-
-                    svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
-                    states.style("opacity", 1);  // Bring back all states
-                }
-
-                // Function to apply zoom transform to all paths
-                function zoomed(event) {
-                    svg.selectAll("path").attr("transform", event.transform);
-                }
-            });
+                svg_choropleth.selectAll('text')
+                    .transition()
+                    .duration(750)
+                    .attr('transform', 'translate(' + viewboxwidth / 2 + ',' + viewboxheight / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')');
+            }
         });
     </script>
 </body>
+
 </html>
