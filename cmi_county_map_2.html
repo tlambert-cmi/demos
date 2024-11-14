@@ -133,7 +133,7 @@
                             var value = countyData[column] || "No data";
                             var county = countyData.county || "Unknown county";
                             tooltip.transition().duration(200).style("opacity", 1);
-                            tooltip.html("FIPS: " + fips + "<br>County: " + county + "<br>Value: " + value)
+                            tooltip.html("County: " + county + "<br>Value: " + value)
                                    .style("left", (event.pageX + 10) + "px")
                                    .style("top", (event.pageY - 30) + "px");
                         }
