@@ -1,89 +1,89 @@
 FIPS,County,value1,value2,value3
-1003,Baldwin County,1,1,112
-1031,Coffee County,1,1,78
-1051,Elmore County,1,1,28
-1073,Jefferson County,12,4,304
-1077,Lauderdale County,4,1,77
-1083,Limestone County,2,1,91
-1089,Madison County,14,6,405
-1097,Mobile County,16,4,263
-1101,Montgomery County,4,1,119
-1103,Morgan County,9,1,56
-1115,St. Clair County,1,1,40
-1117,Shelby County,6,1,169
-2020,Anchorage Municipality,2,2,37
-2090,Fairbanks North Star Borough,1,1,22
-2198,Prince of Wales-Hyder Census Area,1,1,12
-2240,Southeast Fairbanks Census Area,1,1,7
-4005,Coconino County,20,2,187
-4007,Gila County,1,1,53
-4011,Greenlee County,3,1,29
-4012,La Paz County,1,1,28
-4013,Maricopa County,87,26,2192
-4019,Pima County,8,5,352
-4021,Pinal County,3,1,73
-4027,Yuma County,1,1,17
-5051,Garland County,1,1,17
-5119,Pulaski County,15,5,340
-5125,Saline County,35,2,733
-5135,Sharp County,1,1,8
-6001,Alameda County,44,8,1088
-6005,Amador County,5,1,104
-6013,Contra Costa County,10,3,366
-6017,El Dorado County,6,1,99
-6019,Fresno County,3,2,162
-6023,Humboldt County,13,1,141
-6029,Kern County,13,2,293
-6037,Los Angeles County,331,45,6170
-6041,Marin County,22,4,545
-6047,Merced County,12,1,199
-6053,Monterey County,25,6,405
-6059,Orange County,57,10,1037
-6061,Placer County,3,2,270
-6065,Riverside County,16,8,583
-6067,Sacramento County,21,6,681
-6071,San Bernardino County,21,7,649
-6073,San Diego County,100,24,2107
-6075,San Francisco County,31,7,390
-6077,San Joaquin County,8,3,277
-6079,San Luis Obispo County,17,3,441
-6081,San Mateo County,31,6,621
-6083,Santa Barbara County,16,3,275
-6085,Santa Clara County,83,19,2326
-6095,Solano County,1,1,34
-6097,Sonoma County,10,2,205
-6099,Stanislaus County,9,2,403
-6107,Tulare County,3,1,78
-6111,Ventura County,23,4,615
-6113,Yolo County,10,1,113
-8001,Adams County,10,3,274
-8005,Arapahoe County,19,4,661
-8013,Boulder County,2,1,116
-8014,Broomfield County,2,2,118
-8031,Denver County,29,10,513
-8035,Douglas County,7,3,189
-8041,El Paso County,30,6,598
-8059,Jefferson County,27,5,543
-8065,Lake County,10,2,82
-8069,Larimer County,68,13,910
-8071,Las Animas County,1,1,9
-8077,Mesa County,9,2,199
-8097,Pitkin County,1,1,41
-8099,Prowers County,3,1,12
-8123,Weld County,13,3,461
-9001,Fairfield County,12,3,213
-9003,Hartford County,13,3,190
-9005,Litchfield County,57,6,332
-9007,Middlesex County,1,1,21
-9009,New Haven County,103,8,668
-9110,Capitol Planning Region,12,6,140
-9120,Greater Bridgeport Planning Region,7,3,158
-9130,Lower Connecticut River Valley Planning Region,1,1,42
-9140,Naugatuck Valley Planning Region,2,1,44
-9150,Northeastern Connecticut Planning Region,2,1,35
-9170,South Central Connecticut Planning Region,49,9,985
-9180,Southeastern Connecticut Planning Region,6,2,107
-9190,Western Connecticut Planning Region,222,23,4178
+01003,Baldwin County,1,1,112
+01031,Coffee County,1,1,78
+01051,Elmore County,1,1,28
+01073,Jefferson County,12,4,304
+01077,Lauderdale County,4,1,77
+01083,Limestone County,2,1,91
+01089,Madison County,14,6,405
+01097,Mobile County,16,4,263
+01101,Montgomery County,4,1,119
+01103,Morgan County,9,1,56
+01115,St. Clair County,1,1,40
+01117,Shelby County,6,1,169
+02020,Anchorage Municipality,2,2,37
+02090,Fairbanks North Star Borough,1,1,22
+02198,Prince of Wales-Hyder Census Area,1,1,12
+02240,Southeast Fairbanks Census Area,1,1,7
+04005,Coconino County,20,2,187
+04007,Gila County,1,1,53
+04011,Greenlee County,3,1,29
+04012,La Paz County,1,1,28
+04013,Maricopa County,87,26,2192
+04019,Pima County,8,5,352
+04021,Pinal County,3,1,73
+04027,Yuma County,1,1,17
+05051,Garland County,1,1,17
+05119,Pulaski County,15,5,340
+05125,Saline County,35,2,733
+05135,Sharp County,1,1,8
+06001,Alameda County,44,8,1088
+06005,Amador County,5,1,104
+06013,Contra Costa County,10,3,366
+06017,El Dorado County,6,1,99
+06019,Fresno County,3,2,162
+06023,Humboldt County,13,1,141
+06029,Kern County,13,2,293
+06037,Los Angeles County,331,45,6170
+06041,Marin County,22,4,545
+06047,Merced County,12,1,199
+06053,Monterey County,25,6,405
+06059,Orange County,57,10,1037
+06061,Placer County,3,2,270
+06065,Riverside County,16,8,583
+06067,Sacramento County,21,6,681
+06071,San Bernardino County,21,7,649
+06073,San Diego County,100,24,2107
+06075,San Francisco County,31,7,390
+06077,San Joaquin County,8,3,277
+06079,San Luis Obispo County,17,3,441
+06081,San Mateo County,31,6,621
+06083,Santa Barbara County,16,3,275
+06085,Santa Clara County,83,19,2326
+06095,Solano County,1,1,34
+06097,Sonoma County,10,2,205
+06099,Stanislaus County,9,2,403
+06107,Tulare County,3,1,78
+06111,Ventura County,23,4,615
+06113,Yolo County,10,1,113
+08001,Adams County,10,3,274
+08005,Arapahoe County,19,4,661
+08013,Boulder County,2,1,116
+08014,Broomfield County,2,2,118
+08031,Denver County,29,10,513
+08035,Douglas County,7,3,189
+08041,El Paso County,30,6,598
+08059,Jefferson County,27,5,543
+08065,Lake County,10,2,82
+08069,Larimer County,68,13,910
+08071,Las Animas County,1,1,9
+08077,Mesa County,9,2,199
+08097,Pitkin County,1,1,41
+08099,Prowers County,3,1,12
+08123,Weld County,13,3,461
+09001,Fairfield County,12,3,213
+09003,Hartford County,13,3,190
+09005,Litchfield County,57,6,332
+09007,Middlesex County,1,1,21
+09009,New Haven County,103,8,668
+09110,Capitol Planning Region,12,6,140
+09120,Greater Bridgeport Planning Region,7,3,158
+09130,Lower Connecticut River Valley Planning Region,1,1,42
+09140,Naugatuck Valley Planning Region,2,1,44
+09150,Northeastern Connecticut Planning Region,2,1,35
+09170,South Central Connecticut Planning Region,49,9,985
+09180,Southeastern Connecticut Planning Region,6,2,107
+09190,Western Connecticut Planning Region,222,23,4178
 10001,Kent County,3,1,40
 10003,New Castle County,32,7,479
 10005,Sussex County,3,2,80
