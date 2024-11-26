@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded CMI County Map</title>
+</head>
+<body>
+    <h1>CMI County Map</h1>
+    <iframe src="https://tlambert-cmi.github.io/demos/cmi_county_map_2.html" width="100%" height="500" style="border:none;"></iframe>
+</body>
+</html>
