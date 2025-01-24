@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Choropleth Map with Legend</title>
+    <title>Interactive Choropleth Map with Fixed Color Ranges</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
 
@@ -12,6 +12,15 @@
     <style>
         body {
             font-family: 'Work Sans', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Map container styling */
+        svg {
+            display: block;
+            margin: 0 auto;
         }
 
         .county {
@@ -30,16 +39,14 @@
             color: #333;
             border-radius: 4px;
             pointer-events: none;
-            opacity: 0; /* Initially hidden */
+            opacity: 0;
             transition: opacity 0.2s;
         }
 
-        /* Center the legend below the map */
+        /* Legend styling */
         .legend-container {
-            width: 100%; /* Full width container */
-            display: flex;
-            justify-content: center; /* Center content horizontally */
-            margin-top: 20px;
+            margin: 20px auto;
+            display: inline-block;
         }
 
         .legend-label {
@@ -68,7 +75,12 @@
 
         // Define the maroon color scheme
         var maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
-        var color = d3.scaleQuantize().range(maroonColors);
+
+        // Hard-code value ranges for the color scale
+        var thresholds = [1, 10, 20, 30, 50, 100, 200]; // Fixed thresholds
+        var color = d3.scaleThreshold()
+            .domain(thresholds) // Use the fixed ranges
+            .range(maroonColors);
 
         // Tooltip setup
         var tooltip = d3.select(".tooltip");
@@ -105,11 +117,6 @@
                    .attr("stroke", "#000")
                    .attr("fill", "none");
 
-                // Set up color domain for Partner Teachers
-                var minValue = d3.min(data, d => +d.value2);
-                var maxValue = d3.max(data, d => +d.value2);
-                color.domain([minValue, maxValue]);
-
                 // Update county colors and tooltips
                 counties.attr("fill", function(d) {
                     var fips = d.id;
@@ -134,40 +141,40 @@
 
                 // Add legend
                 var legend = d3.select(".legend");
-                var thresholds = color.thresholds(); // Get the thresholds for the color scale
-                var legendData = maroonColors.map((color, i) => {
-                    var min = i === 0 ? minValue : thresholds[i - 1];
-                    var max = thresholds[i] || maxValue;
-                    return {
-                        color: color,
-                        range: `${Math.round(min)} - ${Math.round(max)}`
-                    };
-                });
-
-                // Compute width of legend dynamically
                 var rectWidth = 60; // Width of each rectangle
                 var rectHeight = 20; // Height of each rectangle
-                var spacing = 0; // No gaps between rectangles
-                var legendWidth = rectWidth * legendData.length;
-
-                legend.attr("width", legendWidth);
 
                 // Draw legend rectangles and labels
-                legendData.forEach(function(d, i) {
+                thresholds.forEach(function(threshold, i) {
+                    // Add rectangles
                     legend.append("rect")
                         .attr("x", i * rectWidth)
                         .attr("y", 0)
                         .attr("width", rectWidth)
                         .attr("height", rectHeight)
-                        .attr("fill", d.color);
+                        .attr("fill", maroonColors[i]);
+
+                    // Add labels
+                    var label;
+                    if (i === 0) {
+                        label = "1"; // Values exactly equal to 1
+                    } else if (i === thresholds.length) {
+                        label = `> ${thresholds[i - 1]}`;
+                    } else {
+                        label = `${thresholds[i - 1]} - ${thresholds[i]}`;
+                    }
 
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
                         .attr("y", rectHeight + 15) // Position below the rectangles
                         .attr("text-anchor", "middle")
                         .attr("class", "legend-label")
-                        .text(d.range);
+                        .text(label);
                 });
+
+                // Adjust legend width dynamically
+                legend.attr("width", rectWidth * thresholds.length)
+                      .attr("height", rectHeight + 20);
             });
         });
     </script>
