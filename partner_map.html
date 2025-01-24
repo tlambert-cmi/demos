@@ -76,10 +76,10 @@
         // Define the maroon color scheme
         var maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
 
-        // Hard-code value ranges for the color scale
-        var thresholds = [1, 10, 20, 30, 50, 100, 200]; // Fixed thresholds
+        // Fixed thresholds for ranges
+        var thresholds = [2, 6, 10, 16, 25, 50]; // Lower bounds of each range
         var color = d3.scaleThreshold()
-            .domain(thresholds) // Use the fixed ranges
+            .domain(thresholds)
             .range(maroonColors);
 
         // Tooltip setup
@@ -144,8 +144,19 @@
                 var rectWidth = 60; // Width of each rectangle
                 var rectHeight = 20; // Height of each rectangle
 
+                // Custom legend labels
+                var legendLabels = [
+                    "1",       // First range
+                    "2-5",     // Second range
+                    "6-9",     // Third range
+                    "10-15",   // Fourth range
+                    "16-24",   // Fifth range
+                    "25-49",   // Sixth range
+                    "50+"      // Seventh range
+                ];
+
                 // Draw legend rectangles and labels
-                thresholds.forEach(function(threshold, i) {
+                legendLabels.forEach(function(label, i) {
                     // Add rectangles
                     legend.append("rect")
                         .attr("x", i * rectWidth)
@@ -155,15 +166,6 @@
                         .attr("fill", maroonColors[i]);
 
                     // Add labels
-                    var label;
-                    if (i === 0) {
-                        label = "1"; // Values exactly equal to 1
-                    } else if (i === thresholds.length) {
-                        label = `> ${thresholds[i - 1]}`;
-                    } else {
-                        label = `${thresholds[i - 1]} - ${thresholds[i]}`;
-                    }
-
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
                         .attr("y", rectHeight + 15) // Position below the rectangles
@@ -173,7 +175,7 @@
                 });
 
                 // Adjust legend width dynamically
-                legend.attr("width", rectWidth * thresholds.length)
+                legend.attr("width", rectWidth * legendLabels.length)
                       .attr("height", rectHeight + 20);
             });
         });
