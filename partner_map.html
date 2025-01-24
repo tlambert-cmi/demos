@@ -36,9 +36,15 @@
 
         /* Center the legend below the map */
         .legend-container {
-            width: 960px;
-            margin: 0 auto;
-            text-align: center;
+            width: 100%; /* Full width container */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            margin-top: 20px;
+        }
+
+        .legend-label {
+            font-size: 12px;
+            text-anchor: middle;
         }
     </style>
 </head>
@@ -46,7 +52,7 @@
     <svg width="960" height="600"></svg>
     <div class="tooltip"></div>
     <div class="legend-container">
-        <svg class="legend" width="400" height="50"></svg>
+        <svg class="legend" height="50"></svg>
     </div>
 
     <script>
@@ -138,31 +144,30 @@
                     };
                 });
 
-                // Draw legend rectangles and labels
-                var rectWidth = 40; // Width of each rectangle
+                // Compute width of legend dynamically
+                var rectWidth = 60; // Width of each rectangle
                 var rectHeight = 20; // Height of each rectangle
                 var spacing = 0; // No gaps between rectangles
+                var legendWidth = rectWidth * legendData.length;
 
+                legend.attr("width", legendWidth);
+
+                // Draw legend rectangles and labels
                 legendData.forEach(function(d, i) {
                     legend.append("rect")
-                        .attr("x", i * (rectWidth + spacing))
+                        .attr("x", i * rectWidth)
                         .attr("y", 0)
                         .attr("width", rectWidth)
                         .attr("height", rectHeight)
                         .attr("fill", d.color);
 
                     legend.append("text")
-                        .attr("x", i * (rectWidth + spacing) + rectWidth / 2)
+                        .attr("x", i * rectWidth + rectWidth / 2)
                         .attr("y", rectHeight + 15) // Position below the rectangles
                         .attr("text-anchor", "middle")
-                        .attr("font-size", "12px")
+                        .attr("class", "legend-label")
                         .text(d.range);
                 });
-
-                // Center legend SVG
-                legend.attr("width", legendData.length * (rectWidth + spacing))
-                      .attr("height", rectHeight + 20)
-                      .attr("viewBox", `0 0 ${legendData.length * (rectWidth + spacing)} ${rectHeight + 20}`);
             });
         });
     </script>
