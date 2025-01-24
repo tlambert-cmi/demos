@@ -65,7 +65,7 @@
     <svg width="960" height="600"></svg>
     <div class="tooltip"></div>
     <div class="legend-container">
-        <svg class="legend" height="70"></svg>
+        <svg class="legend" height="100"></svg>
     </div>
 
     <script>
@@ -136,7 +136,7 @@
                         var value = countyData.value || "No data";
                         var county = countyData.county || "Unknown county";
                         tooltip.transition().duration(200).style("opacity", 1);
-                        tooltip.html(county + "<br>Partner Teachers: " + value)
+                        tooltip.html("County: " + county + "<br>Partner Teachers: " + value)
                                .style("left", (event.pageX + 10) + "px")
                                .style("top", (event.pageY - 30) + "px");
                     }
@@ -181,7 +181,7 @@
                     // Add labels
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
-                        .attr("y", 30 + rectHeight + 15) // Position below the rectangles
+                        .attr("y", 30 + rectHeight + 20) // Position below the rectangles with extra padding
                         .attr("text-anchor", "middle")
                         .attr("class", "legend-label")
                         .text(label);
@@ -189,7 +189,7 @@
 
                 // Adjust legend width dynamically
                 legend.attr("width", rectWidth * legendLabels.length)
-                      .attr("height", rectHeight + 40); // Adjusted for title
+                      .attr("height", 80); // Increased height to avoid clipping
             });
         });
     </script>
