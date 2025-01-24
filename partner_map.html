@@ -53,13 +53,19 @@
             font-size: 12px;
             text-anchor: middle;
         }
+
+        .legend-title {
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
     </style>
 </head>
 <body>
     <svg width="960" height="600"></svg>
     <div class="tooltip"></div>
     <div class="legend-container">
-        <svg class="legend" height="50"></svg>
+        <svg class="legend" height="70"></svg>
     </div>
 
     <script>
@@ -130,7 +136,7 @@
                         var value = countyData.value || "No data";
                         var county = countyData.county || "Unknown county";
                         tooltip.transition().duration(200).style("opacity", 1);
-                        tooltip.html("County: " + county + "<br>Partner Teachers: " + value)
+                        tooltip.html(county + "<br>Partner Teachers: " + value)
                                .style("left", (event.pageX + 10) + "px")
                                .style("top", (event.pageY - 30) + "px");
                     }
@@ -143,6 +149,13 @@
                 var legend = d3.select(".legend");
                 var rectWidth = 60; // Width of each rectangle
                 var rectHeight = 20; // Height of each rectangle
+
+                // Add title above the legend
+                legend.append("text")
+                    .attr("class", "legend-title")
+                    .attr("x", (rectWidth * maroonColors.length) / 2) // Centered
+                    .attr("y", 15) // Position above the rectangles
+                    .text("CMI Partner Teachers by County");
 
                 // Custom legend labels
                 var legendLabels = [
@@ -160,7 +173,7 @@
                     // Add rectangles
                     legend.append("rect")
                         .attr("x", i * rectWidth)
-                        .attr("y", 0)
+                        .attr("y", 30) // Below the title
                         .attr("width", rectWidth)
                         .attr("height", rectHeight)
                         .attr("fill", maroonColors[i]);
@@ -168,7 +181,7 @@
                     // Add labels
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
-                        .attr("y", rectHeight + 15) // Position below the rectangles
+                        .attr("y", 30 + rectHeight + 15) // Position below the rectangles
                         .attr("text-anchor", "middle")
                         .attr("class", "legend-label")
                         .text(label);
@@ -176,7 +189,7 @@
 
                 // Adjust legend width dynamically
                 legend.attr("width", rectWidth * legendLabels.length)
-                      .attr("height", rectHeight + 20);
+                      .attr("height", rectHeight + 40); // Adjusted for title
             });
         });
     </script>
