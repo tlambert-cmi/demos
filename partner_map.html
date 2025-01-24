@@ -38,17 +38,30 @@
         .legend {
             display: flex;
             justify-content: center;
+            align-items: center;
             margin-top: 20px;
-            font-size: 12px;
         }
+
         .legend-item {
-            text-align: center;
-            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .legend-color {
-            width: 20px;
+            width: 40px; /* Wider rectangles */
             height: 20px;
-            margin: 0 auto;
+            border: none; /* Remove any border */
+        }
+
+        .legend-item:not(:last-child) .legend-color {
+            margin-right: -1px; /* Remove space between rectangles */
+        }
+
+        .legend-label {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -151,7 +164,9 @@
                     legendItem.append("div")
                         .attr("class", "legend-color")
                         .style("background-color", d.color);
-                    legendItem.append("div").text(d.range);
+                    legendItem.append("div")
+                        .attr("class", "legend-label")
+                        .text(d.range);
                 });
             });
         });
