@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simplified Responsive Choropleth Map</title>
+    <title>Fixed Responsive Choropleth Map</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -37,21 +37,6 @@
             opacity: 0;
             transition: opacity 0.2s;
         }
-
-        .legend-container {
-            width: 100%;
-            text-align: center;
-            margin: 20px auto;
-        }
-
-        .legend-title {
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .legend-label {
-            font-size: 12px;
-        }
     </style>
 </head>
 <body>
@@ -63,27 +48,20 @@
         const svg = d3.select("svg");
         const tooltip = d3.select(".tooltip");
 
-        const projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]); // Centered on the USA
+        const projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]);
         const path = d3.geoPath().projection(projection);
 
         const maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
         const thresholds = [2, 6, 10, 16, 25, 50];
-        const color = d3.scaleThreshold()
-            .domain(thresholds)
-            .range(maroonColors);
+        const color = d3.scaleThreshold().domain(thresholds).range(maroonColors);
 
-        // Load the map and data
         d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
             d3.csv("schools_2.csv").then(function(data) {
                 const dataByFIPS = {};
                 data.forEach(d => {
-                    dataByFIPS[d.FIPS] = {
-                        value: +d.value2,
-                        county: d.County,
-                    };
+                    dataByFIPS[d.FIPS] = { value: +d.value2, county: d.County };
                 });
 
-                // Draw counties
                 svg.append("g")
                     .selectAll("path")
                     .data(topojson.feature(us, us.objects.counties).features)
@@ -94,61 +72,49 @@
                         return countyData ? color(countyData.value) : "#ccc";
                     })
                     .attr("stroke", "#fff")
-                    .attr("stroke-width", 0.5) // Keep this fixed, as the entire map scales
-                    .on("mouseover", function(event, d) {
-                        const countyData = dataByFIPS[d.id];
-                        if (countyData) {
-                            tooltip.transition().duration(200).style("opacity", 1);
-                            tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
-                                .style("left", (event.pageX + 10) + "px")
-                                .style("top", (event.pageY - 30) + "px");
-                        }
-                    })
-                    .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
+                    .attr("stroke-width", 0.5);
 
-                // Add state borders
                 svg.append("path")
                     .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
                     .attr("d", path)
                     .attr("stroke", "#000")
                     .attr("fill", "none")
-                    .attr("stroke-width", 1); // State borders remain proportional
+                    .attr("stroke-width", 1);
 
                 // Add legend
+                const svgWidth = +svg.attr("viewBox").split(" ")[2];
+                const svgHeight = +svg.attr("viewBox").split(" ")[3];
+
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${width * 0.1}, ${height * 0.8})`); // Position near bottom-left
+                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight * 0.8})`);
 
-                const rectWidth = width * 0.05; // Scale rectangle width based on map width
-                const rectHeight = height * 0.03; // Scale rectangle height based on map height
+                const rectWidth = svgWidth * 0.05;
+                const rectHeight = svgHeight * 0.03;
 
                 maroonColors.forEach((color, i) => {
-                // Add legend color boxes
                     legend.append("rect")
-                    .attr("x", i * rectWidth)
-                    .attr("y", 0)
-                    .attr("width", rectWidth)
-                    .attr("height", rectHeight)
-                    .attr("fill", color);
+                        .attr("x", i * rectWidth)
+                        .attr("y", 0)
+                        .attr("width", rectWidth)
+                        .attr("height", rectHeight)
+                        .attr("fill", color);
 
-                // Add text labels below each rectangle
                     legend.append("text")
-                    .attr("x", i * rectWidth + rectWidth / 2)
-                    .attr("y", rectHeight + height * 0.03) // Space text below rectangles
-                    .attr("text-anchor", "middle")
-                    .attr("font-size", `${height * 0.02}px`) // Scale font size dynamically
-                    .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
-            });
+                        .attr("x", i * rectWidth + rectWidth / 2)
+                        .attr("y", rectHeight + svgHeight * 0.02)
+                        .attr("text-anchor", "middle")
+                        .attr("font-size", `${svgHeight * 0.02}px`)
+                        .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
+                });
 
-                // Add a legend title
-                    legend.append("text")
+                legend.append("text")
                     .attr("x", 0)
-                    .attr("y", -height * 0.05) // Position above the legend
+                    .attr("y", -svgHeight * 0.05)
                     .attr("text-anchor", "start")
-                .attr("font-size", `${height * 0.03}px`) // Scale font size dynamically
-                .attr("class", "legend-title")
-                .text("Partner Teachers by County");
-
+                    .attr("font-size", `${svgHeight * 0.03}px`)
+                    .attr("class", "legend-title")
+                    .text("Partner Teachers by County");
             });
         });
     </script>
