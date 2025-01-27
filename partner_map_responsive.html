@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Choropleth Map</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map-container {
+            width: 100%;
+            padding-top: 62.5%; /* Maintain 16:10 aspect ratio */
+            position: relative;
+        }
+
+        .map-container svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #999;
+            padding: 10px;
+            font-size: 12px;
+            color: #333;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .legend-container {
+            width: 100%;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .legend {
+            width: 100%;
+            height: auto;
+        }
+
+        .legend-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .legend-label {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="tooltip"></div>
+    <div class="legend-container">
+        <svg class="legend"></svg>
+    </div>
+
+    <script>
+        var svg = d3.select("svg"),
+            width = parseInt(svg.style("width")),
+            height = parseInt(svg.style("height"));
+
+        var projection = d3.geoAlbersUsa()
+            .scale(width * 1.25)
+            .translate([width / 2, height / 2]);
+
+        var path = d3.geoPath().projection(projection);
+
+        var maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
+
+        var thresholds = [2, 6, 10, 16, 25, 50];
+        var color = d3.scaleThreshold().domain(thresholds).range(maroonColors);
+
+        var tooltip = d3.select(".tooltip");
+
+        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
+            d3.csv("schools_2.csv").then(function(data) {
+                var dataByFIPS = {};
+                data.forEach(function(d) {
+                    dataByFIPS[d.FIPS] = { value: +d.value2, county: d.County };
+                });
+
+                var counties = svg.append("g")
+                   .attr("class", "counties")
+                   .selectAll("path")
+                   .data(topojson.feature(us, us.objects.counties).features)
+                   .enter().append("path")
+                   .attr("d", path)
+                   .attr("fill", function(d) {
+                       var countyData = dataByFIPS[d.id];
+                       return countyData ? color(countyData.value) : "#ccc";
+                   })
+                   .on("mouseover", function(event, d) {
+                       var countyData = dataByFIPS[d.id];
+                       if (countyData) {
+                           tooltip.transition().duration(200).style("opacity", 1);
+                           tooltip.html(countyData.county + "<br>Partner Teachers: " + countyData.value)
+                                  .style("left", (event.pageX + 10) + "px")
+                                  .style("top", (event.pageY - 30) + "px");
+                       }
+                   })
+                   .on("mouseout", function() {
+                       tooltip.transition().duration(200).style("opacity", 0);
+                   });
+
+                svg.append("path")
+                   .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+                   .attr("class", "states")
+                   .attr("d", path)
+                   .attr("stroke", "#000")
+                   .attr("fill", "none");
+
+                var legend = d3.select(".legend");
+                var rectWidth = 60, rectHeight = 20;
+
+                legend.append("text")
+                    .attr("class", "legend-title")
+                    .attr("x", (rectWidth * maroonColors.length) / 2)
+                    .attr("y", 15)
+                    .text("CMI Partner Teachers by County");
+
+                var legendLabels = ["1", "2-5", "6-9", "10-15", "16-24", "25-49", "50+"];
+
+                legendLabels.forEach(function(label, i) {
+                    legend.append("rect")
+                        .attr("x", i * rectWidth)
+                        .attr("y", 30)
+                        .attr("width", rectWidth)
+                        .attr("height", rectHeight)
+                        .attr("fill", maroonColors[i]);
+
+                    legend.append("text")
+                        .attr("x", i * rectWidth + rectWidth / 2)
+                        .attr("y", 30 + rectHeight + 20)
+                        .attr("text-anchor", "middle")
+                        .attr("class", "legend-label")
+                        .text(label);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
