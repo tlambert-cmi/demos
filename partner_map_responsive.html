@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reupdated Responsive Choropleth Map</title>
+    <title>Simplified Responsive Choropleth Map</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,9 +15,14 @@
         }
 
         .map-container {
-            width: 100%;
-            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full width of the viewport */
+            height: 100vh; /* Full height of the viewport */
             position: relative;
+        }
+
+        svg {
+            width: 100%; /* Scales to fill container */
+            height: 100%;
         }
 
         .tooltip {
@@ -39,11 +44,6 @@
             margin: 20px auto;
         }
 
-        .legend {
-            width: 100%;
-            height: auto;
-        }
-
         .legend-title {
             font-size: 14px;
             font-weight: bold;
@@ -52,32 +52,18 @@
         .legend-label {
             font-size: 12px;
         }
-
-        .county {
-            stroke: #fff;
-            stroke-width: 0.5vw; /* Scale the stroke-width relative to the viewport width */
-        }
-        
     </style>
 </head>
 <body>
     <div class="map-container">
-        <svg></svg>
+        <svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
     </div>
     <div class="tooltip"></div>
-    <div class="legend-container">
-        <svg class="legend"></svg>
-    </div>
-
     <script>
-        const container = d3.select(".map-container");
-        const svg = container.select("svg");
+        const svg = d3.select("svg");
         const tooltip = d3.select(".tooltip");
 
-        let width = container.node().clientWidth;
-        let height = container.node().clientHeight;
-
-        const projection = d3.geoAlbersUsa();
+        const projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]); // Centered on the USA
         const path = d3.geoPath().projection(projection);
 
         const maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
@@ -86,111 +72,77 @@
             .domain(thresholds)
             .range(maroonColors);
 
-        const legendLabels = ["1", "2-5", "6-9", "10-15", "16-24", "25-49", "50+"];
-
-        function drawMap() {
-            // Update dimensions
-            width = container.node().clientWidth;
-            height = container.node().clientHeight;
-
-            svg.attr("width", width).attr("height", height);
-
-            // Update projection scale and translation
-            projection
-                .scale(width * 1.2) // Adjust scale dynamically
-                .translate([width / 2, height / 2]);
-
-            // Clear previous map contents
-            svg.selectAll("*").remove();
-
-            // Load data and draw map
-            d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function (us) {
-                d3.csv("schools_2.csv").then(function (data) {
-                    const dataByFIPS = {};
-                    data.forEach(d => {
-                        dataByFIPS[d.FIPS] = {
-                            value: +d.value2,
-                            county: d.County,
-                        };
-                    });
-
-                    // Draw counties
-                    const counties = svg.append("g")
-                        .attr("class", "counties")
-                        .selectAll("path")
-                        .data(topojson.feature(us, us.objects.counties).features)
-                        .enter().append("path")
-                        .attr("d", path)
-                        .attr("fill", d => {
-                            const countyData = dataByFIPS[d.id];
-                            return countyData ? color(countyData.value) : "#ccc";
-                        })
-                        .on("mouseover", function (event, d) {
-                            const countyData = dataByFIPS[d.id];
-                            if (countyData) {
-                                tooltip.transition().duration(200).style("opacity", 1);
-                                tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
-                                    .style("left", (event.pageX + 10) + "px")
-                                    .style("top", (event.pageY - 30) + "px");
-                            }
-                        })
-                        .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
-
-                    // Draw state borders
-                    svg.append("path")
-                        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
-                        .attr("class", "states")
-                        .attr("d", path)
-                        .attr("stroke", "#000")
-                        .attr("fill", "none");
-
-                    drawLegend();
+        // Load the map and data
+        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
+            d3.csv("schools_2.csv").then(function(data) {
+                const dataByFIPS = {};
+                data.forEach(d => {
+                    dataByFIPS[d.FIPS] = {
+                        value: +d.value2,
+                        county: d.County,
+                    };
                 });
-            });
-        }
 
-        function drawLegend() {
-            const legend = d3.select(".legend");
-            legend.selectAll("*").remove();
+                // Draw counties
+                svg.append("g")
+                    .selectAll("path")
+                    .data(topojson.feature(us, us.objects.counties).features)
+                    .enter().append("path")
+                    .attr("d", path)
+                    .attr("fill", d => {
+                        const countyData = dataByFIPS[d.id];
+                        return countyData ? color(countyData.value) : "#ccc";
+                    })
+                    .attr("stroke", "#fff")
+                    .attr("stroke-width", 0.5) // Keep this fixed, as the entire map scales
+                    .on("mouseover", function(event, d) {
+                        const countyData = dataByFIPS[d.id];
+                        if (countyData) {
+                            tooltip.transition().duration(200).style("opacity", 1);
+                            tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
+                                .style("left", (event.pageX + 10) + "px")
+                                .style("top", (event.pageY - 30) + "px");
+                        }
+                    })
+                    .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
 
-            const rectWidth = 60;
-            const rectHeight = 20;
+                // Add state borders
+                svg.append("path")
+                    .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+                    .attr("d", path)
+                    .attr("stroke", "#000")
+                    .attr("fill", "none")
+                    .attr("stroke-width", 1); // State borders remain proportional
 
-            legend.append("text")
-                .attr("class", "legend-title")
-                .attr("x", (rectWidth * legendLabels.length) / 2)
-                .attr("y", 15)
-                .text("CMI Partner Teachers by County");
+                // Add legend
+                const legend = svg.append("g")
+                    .attr("transform", "translate(20,20)"); // Adjust position as needed
 
-            legendLabels.forEach((label, i) => {
-                legend.append("rect")
-                    .attr("x", i * rectWidth)
-                    .attr("y", 30)
-                    .attr("width", rectWidth)
-                    .attr("height", rectHeight)
-                    .attr("fill", maroonColors[i]);
+                const rectWidth = 20;
+                const rectHeight = 20;
+
+                maroonColors.forEach((color, i) => {
+                    legend.append("rect")
+                        .attr("x", i * rectWidth)
+                        .attr("y", 0)
+                        .attr("width", rectWidth)
+                        .attr("height", rectHeight)
+                        .attr("fill", color);
+
+                    legend.append("text")
+                        .attr("x", i * rectWidth + rectWidth / 2)
+                        .attr("y", rectHeight + 15)
+                        .attr("text-anchor", "middle")
+                        .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
+                });
 
                 legend.append("text")
-                    .attr("x", i * rectWidth + rectWidth / 2)
-                    .attr("y", 30 + rectHeight + 20)
-                    .attr("text-anchor", "middle")
-                    .attr("class", "legend-label")
-                    .text(label);
+                    .attr("x", 0)
+                    .attr("y", -10)
+                    .attr("class", "legend-title")
+                    .text("Partner Teachers by County");
             });
-        }
-
-        // Initial draw
-        drawMap();
-
-        // Redraw on window resize
-        window.addEventListener("resize", drawMap);
-
-
-        // Wait for the map to render, then override stroke-width
-        const counties = document.querySelectorAll('.county');
-        counties.forEach(county => {
-        county.style.strokeWidth = '3.3vw'; // Set stroke width dynamically
-    });
+        });
     </script>
 </body>
 </html>
