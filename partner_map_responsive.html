@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Method Institute Partner Teachers</title>
+    <title>Responsive Choropleth Map</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,17 +12,19 @@
             font-family: 'Work Sans', sans-serif;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Prevent scroll bars */
         }
 
         .map-container {
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; /* Full width of the viewport */
+            height: 100vh; /* Full height of the viewport */
             position: relative;
         }
 
         svg {
             width: 100%;
             height: 100%;
+            display: block; /* Prevent extra whitespace */
         }
 
         .tooltip {
@@ -48,6 +50,7 @@
         const svg = d3.select("svg");
         const tooltip = d3.select(".tooltip");
 
+        // Extract viewBox dimensions
         const svgWidth = +svg.attr("viewBox").split(" ")[2];
         const svgHeight = +svg.attr("viewBox").split(" ")[3];
 
@@ -99,9 +102,9 @@
                 // Add legend
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${svgWidth * 0.15}, ${svgHeight - 80})`);
+                    .attr("transform", `translate(${(svgWidth - (rectWidth * maroonColors.length)) / 2}, ${svgHeight - 80})`);
 
-                const rectWidth = svgWidth * 0.1;
+                const rectWidth = svgWidth * 0.1; // Each rectangle is 10% of the width
                 const rectHeight = 20;
 
                 const legendLabels = ["1", "2–5", "6–9", "10–15", "16–24", "25–49", "50+"];
@@ -128,7 +131,7 @@
                     .attr("text-anchor", "start")
                     .attr("font-size", "14px")
                     .attr("font-weight", "bold")
-                    .text("CMI Partner Teachers by County");
+                    .text("Partner Teachers by County");
             });
         });
     </script>
