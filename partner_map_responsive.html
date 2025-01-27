@@ -99,7 +99,7 @@
                 // Add legend
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight - 80})`);
+                    .attr("transform", `translate(${(svgWidth - (rectWidth * maroonColors.length)) / 2}, ${svgHeight - 80})`);
 
                 const rectWidth = svgWidth * 0.1;
                 const rectHeight = 20;
