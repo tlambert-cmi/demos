@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed Responsive Choropleth Map</title>
+    <title>Responsive Choropleth Map with Legend</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -41,12 +41,16 @@
 </head>
 <body>
     <div class="map-container">
-        <svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+        <svg viewBox="0 0 960 700" preserveAspectRatio="xMidYMid meet"></svg>
     </div>
     <div class="tooltip"></div>
     <script>
         const svg = d3.select("svg");
         const tooltip = d3.select(".tooltip");
+
+        // Extract viewBox dimensions
+        const svgWidth = +svg.attr("viewBox").split(" ")[2];
+        const svgHeight = +svg.attr("viewBox").split(" ")[3];
 
         const projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]);
         const path = d3.geoPath().projection(projection);
@@ -62,6 +66,7 @@
                     dataByFIPS[d.FIPS] = { value: +d.value2, county: d.County };
                 });
 
+                // Draw counties
                 svg.append("g")
                     .selectAll("path")
                     .data(topojson.feature(us, us.objects.counties).features)
@@ -74,6 +79,7 @@
                     .attr("stroke", "#fff")
                     .attr("stroke-width", 0.5);
 
+                // Add state borders
                 svg.append("path")
                     .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
                     .attr("d", path)
@@ -82,17 +88,15 @@
                     .attr("stroke-width", 1);
 
                 // Add legend
-                const svgWidth = +svg.attr("viewBox").split(" ")[2];
-                const svgHeight = +svg.attr("viewBox").split(" ")[3];
-
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight * 0.8})`);
+                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight - 80})`); // Position below the map
 
-                const rectWidth = svgWidth * 0.05;
-                const rectHeight = svgHeight * 0.03;
+                const rectWidth = svgWidth * 0.1; // Each rectangle is 10% of the width
+                const rectHeight = 20; // Fixed height for legend rectangles
 
                 maroonColors.forEach((color, i) => {
+                    // Add legend color boxes
                     legend.append("rect")
                         .attr("x", i * rectWidth)
                         .attr("y", 0)
@@ -100,20 +104,22 @@
                         .attr("height", rectHeight)
                         .attr("fill", color);
 
+                    // Add text labels below each rectangle
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
-                        .attr("y", rectHeight + svgHeight * 0.02)
+                        .attr("y", rectHeight + 15)
                         .attr("text-anchor", "middle")
-                        .attr("font-size", `${svgHeight * 0.02}px`)
+                        .attr("font-size", "12px")
                         .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
                 });
 
+                // Add a legend title
                 legend.append("text")
                     .attr("x", 0)
-                    .attr("y", -svgHeight * 0.05)
+                    .attr("y", -10)
                     .attr("text-anchor", "start")
-                    .attr("font-size", `${svgHeight * 0.03}px`)
-                    .attr("class", "legend-title")
+                    .attr("font-size", "14px")
+                    .attr("font-weight", "bold")
                     .text("Partner Teachers by County");
             });
         });
