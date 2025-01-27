@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Choropleth Map</title>
+    <title>Updated Responsive Choropleth Map</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -184,6 +184,13 @@
 
         // Redraw on window resize
         window.addEventListener("resize", drawMap);
+
+
+        // Wait for the map to render, then override stroke-width
+        const counties = document.querySelectorAll('.county');
+        counties.forEach(county => {
+        county.style.strokeWidth = '0.3vw'; // Set stroke width dynamically
+    });
     </script>
 </body>
 </html>
