@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Choropleth Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Choropleth Map</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Work Sans', sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
         }
 
         .map-container {
             width: 100%;
-            padding-top: 62.5%; /* Maintain 16:10 aspect ratio */
+            height: 100vh; /* Full viewport height */
             position: relative;
-        }
-
-        .map-container svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
         }
 
         .tooltip {
@@ -64,7 +56,7 @@
 </head>
 <body>
     <div class="map-container">
-        <svg viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet"></svg>
+        <svg></svg>
     </div>
     <div class="tooltip"></div>
     <div class="legend-container">
@@ -72,88 +64,120 @@
     </div>
 
     <script>
-        var svg = d3.select("svg"),
-            width = parseInt(svg.style("width")),
-            height = parseInt(svg.style("height"));
+        const container = d3.select(".map-container");
+        const svg = container.select("svg");
+        const tooltip = d3.select(".tooltip");
 
-        var projection = d3.geoAlbersUsa()
-            .scale(width * 1.25)
-            .translate([width / 2, height / 2]);
+        let width = container.node().clientWidth;
+        let height = container.node().clientHeight;
 
-        var path = d3.geoPath().projection(projection);
+        const projection = d3.geoAlbersUsa();
+        const path = d3.geoPath().projection(projection);
 
-        var maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
+        const maroonColors = ["#f7c6c6", "#ee8e8e", "#e65858", "#db2a2a", "#b12020", "#8f1717", "#731111"];
+        const thresholds = [2, 6, 10, 16, 25, 50];
+        const color = d3.scaleThreshold()
+            .domain(thresholds)
+            .range(maroonColors);
 
-        var thresholds = [2, 6, 10, 16, 25, 50];
-        var color = d3.scaleThreshold().domain(thresholds).range(maroonColors);
+        const legendLabels = ["1", "2-5", "6-9", "10-15", "16-24", "25-49", "50+"];
 
-        var tooltip = d3.select(".tooltip");
+        function drawMap() {
+            // Update dimensions
+            width = container.node().clientWidth;
+            height = container.node().clientHeight;
 
-        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function(us) {
-            d3.csv("schools_2.csv").then(function(data) {
-                var dataByFIPS = {};
-                data.forEach(function(d) {
-                    dataByFIPS[d.FIPS] = { value: +d.value2, county: d.County };
-                });
+            svg.attr("width", width).attr("height", height);
 
-                var counties = svg.append("g")
-                   .attr("class", "counties")
-                   .selectAll("path")
-                   .data(topojson.feature(us, us.objects.counties).features)
-                   .enter().append("path")
-                   .attr("d", path)
-                   .attr("fill", function(d) {
-                       var countyData = dataByFIPS[d.id];
-                       return countyData ? color(countyData.value) : "#ccc";
-                   })
-                   .on("mouseover", function(event, d) {
-                       var countyData = dataByFIPS[d.id];
-                       if (countyData) {
-                           tooltip.transition().duration(200).style("opacity", 1);
-                           tooltip.html(countyData.county + "<br>Partner Teachers: " + countyData.value)
-                                  .style("left", (event.pageX + 10) + "px")
-                                  .style("top", (event.pageY - 30) + "px");
-                       }
-                   })
-                   .on("mouseout", function() {
-                       tooltip.transition().duration(200).style("opacity", 0);
-                   });
+            // Update projection scale and translation
+            projection
+                .scale(width * 1.2) // Adjust scale dynamically
+                .translate([width / 2, height / 2]);
 
-                svg.append("path")
-                   .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-                   .attr("class", "states")
-                   .attr("d", path)
-                   .attr("stroke", "#000")
-                   .attr("fill", "none");
+            // Clear previous map contents
+            svg.selectAll("*").remove();
 
-                var legend = d3.select(".legend");
-                var rectWidth = 60, rectHeight = 20;
+            // Load data and draw map
+            d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(function (us) {
+                d3.csv("schools_2.csv").then(function (data) {
+                    const dataByFIPS = {};
+                    data.forEach(d => {
+                        dataByFIPS[d.FIPS] = {
+                            value: +d.value2,
+                            county: d.County,
+                        };
+                    });
 
-                legend.append("text")
-                    .attr("class", "legend-title")
-                    .attr("x", (rectWidth * maroonColors.length) / 2)
-                    .attr("y", 15)
-                    .text("CMI Partner Teachers by County");
+                    // Draw counties
+                    const counties = svg.append("g")
+                        .attr("class", "counties")
+                        .selectAll("path")
+                        .data(topojson.feature(us, us.objects.counties).features)
+                        .enter().append("path")
+                        .attr("d", path)
+                        .attr("fill", d => {
+                            const countyData = dataByFIPS[d.id];
+                            return countyData ? color(countyData.value) : "#ccc";
+                        })
+                        .on("mouseover", function (event, d) {
+                            const countyData = dataByFIPS[d.id];
+                            if (countyData) {
+                                tooltip.transition().duration(200).style("opacity", 1);
+                                tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
+                                    .style("left", (event.pageX + 10) + "px")
+                                    .style("top", (event.pageY - 30) + "px");
+                            }
+                        })
+                        .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
 
-                var legendLabels = ["1", "2-5", "6-9", "10-15", "16-24", "25-49", "50+"];
+                    // Draw state borders
+                    svg.append("path")
+                        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+                        .attr("class", "states")
+                        .attr("d", path)
+                        .attr("stroke", "#000")
+                        .attr("fill", "none");
 
-                legendLabels.forEach(function(label, i) {
-                    legend.append("rect")
-                        .attr("x", i * rectWidth)
-                        .attr("y", 30)
-                        .attr("width", rectWidth)
-                        .attr("height", rectHeight)
-                        .attr("fill", maroonColors[i]);
-
-                    legend.append("text")
-                        .attr("x", i * rectWidth + rectWidth / 2)
-                        .attr("y", 30 + rectHeight + 20)
-                        .attr("text-anchor", "middle")
-                        .attr("class", "legend-label")
-                        .text(label);
+                    drawLegend();
                 });
             });
-        });
+        }
+
+        function drawLegend() {
+            const legend = d3.select(".legend");
+            legend.selectAll("*").remove();
+
+            const rectWidth = 60;
+            const rectHeight = 20;
+
+            legend.append("text")
+                .attr("class", "legend-title")
+                .attr("x", (rectWidth * legendLabels.length) / 2)
+                .attr("y", 15)
+                .text("CMI Partner Teachers by County");
+
+            legendLabels.forEach((label, i) => {
+                legend.append("rect")
+                    .attr("x", i * rectWidth)
+                    .attr("y", 30)
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight)
+                    .attr("fill", maroonColors[i]);
+
+                legend.append("text")
+                    .attr("x", i * rectWidth + rectWidth / 2)
+                    .attr("y", 30 + rectHeight + 20)
+                    .attr("text-anchor", "middle")
+                    .attr("class", "legend-label")
+                    .text(label);
+            });
+        }
+
+        // Initial draw
+        drawMap();
+
+        // Redraw on window resize
+        window.addEventListener("resize", drawMap);
     </script>
 </body>
 </html>
