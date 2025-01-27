@@ -102,7 +102,7 @@
                 // Add legend
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(50, ${svgHeight - 80})`); // Place legend visibly
+                    .attr("transform", `translate(${svgWidth * 0.15}, ${svgHeight - 80})`); // 15% of the SVG width from the left
 
                 const rectWidth = svgWidth * 0.1;
                 const rectHeight = 20; // Height of each legend rectangle
