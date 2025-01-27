@@ -102,10 +102,10 @@
                 // Add legend
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${(svgWidth - (rectWidth * maroonColors.length)) / 2}, ${svgHeight - 80})`);
+                    .attr("transform", `translate(50, ${svgHeight - 100})`); // Place legend visibly
 
-                const rectWidth = svgWidth * 0.1; // Each rectangle is 10% of the width
-                const rectHeight = 20;
+                const rectWidth = 80; // Fixed width for testing
+                const rectHeight = 20; // Height of each legend rectangle
 
                 const legendLabels = ["1", "2–5", "6–9", "10–15", "16–24", "25–49", "50+"];
 
