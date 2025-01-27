@@ -116,31 +116,39 @@
 
                 // Add legend
                 const legend = svg.append("g")
-                    .attr("transform", "translate(20,20)"); // Adjust position as needed
+                    .attr("class", "legend")
+                    .attr("transform", `translate(${width * 0.1}, ${height * 0.8})`); // Position near bottom-left
 
-                const rectWidth = 20;
-                const rectHeight = 20;
+                const rectWidth = width * 0.05; // Scale rectangle width based on map width
+                const rectHeight = height * 0.03; // Scale rectangle height based on map height
 
                 maroonColors.forEach((color, i) => {
+                // Add legend color boxes
                     legend.append("rect")
-                        .attr("x", i * rectWidth)
-                        .attr("y", 0)
-                        .attr("width", rectWidth)
-                        .attr("height", rectHeight)
-                        .attr("fill", color);
+                    .attr("x", i * rectWidth)
+                    .attr("y", 0)
+                    .attr("width", rectWidth)
+                    .attr("height", rectHeight)
+                    .attr("fill", color);
 
+                // Add text labels below each rectangle
                     legend.append("text")
-                        .attr("x", i * rectWidth + rectWidth / 2)
-                        .attr("y", rectHeight + 15)
-                        .attr("text-anchor", "middle")
-                        .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
-                });
+                    .attr("x", i * rectWidth + rectWidth / 2)
+                    .attr("y", rectHeight + height * 0.03) // Space text below rectangles
+                    .attr("text-anchor", "middle")
+                    .attr("font-size", `${height * 0.02}px`) // Scale font size dynamically
+                    .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
+            });
 
-                legend.append("text")
+                // Add a legend title
+                    legend.append("text")
                     .attr("x", 0)
-                    .attr("y", -10)
-                    .attr("class", "legend-title")
-                    .text("Partner Teachers by County");
+                    .attr("y", -height * 0.05) // Position above the legend
+                    .attr("text-anchor", "start")
+                .attr("font-size", `${height * 0.03}px`) // Scale font size dynamically
+                .attr("class", "legend-title")
+                .text("Partner Teachers by County");
+
             });
         });
     </script>
