@@ -15,13 +15,13 @@
         }
 
         .map-container {
-            width: 100vw; /* Full width of the viewport */
-            height: 100vh; /* Full height of the viewport */
+            width: 100vw;
+            height: 100vh;
             position: relative;
         }
 
         svg {
-            width: 100%; /* Scales to fill container */
+            width: 100%;
             height: 100%;
         }
 
@@ -48,7 +48,6 @@
         const svg = d3.select("svg");
         const tooltip = d3.select(".tooltip");
 
-        // Extract viewBox dimensions
         const svgWidth = +svg.attr("viewBox").split(" ")[2];
         const svgHeight = +svg.attr("viewBox").split(" ")[3];
 
@@ -77,7 +76,17 @@
                         return countyData ? color(countyData.value) : "#ccc";
                     })
                     .attr("stroke", "#fff")
-                    .attr("stroke-width", 0.5);
+                    .attr("stroke-width", 0.5)
+                    .on("mouseover", function(event, d) {
+                        const countyData = dataByFIPS[d.id];
+                        if (countyData) {
+                            tooltip.transition().duration(200).style("opacity", 1);
+                            tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
+                                .style("left", (event.pageX + 10) + "px")
+                                .style("top", (event.pageY - 30) + "px");
+                        }
+                    })
+                    .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
 
                 // Add state borders
                 svg.append("path")
@@ -90,13 +99,14 @@
                 // Add legend
                 const legend = svg.append("g")
                     .attr("class", "legend")
-                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight - 80})`); // Position below the map
+                    .attr("transform", `translate(${svgWidth * 0.1}, ${svgHeight - 80})`);
 
-                const rectWidth = svgWidth * 0.1; // Each rectangle is 10% of the width
-                const rectHeight = 20; // Fixed height for legend rectangles
+                const rectWidth = svgWidth * 0.1;
+                const rectHeight = 20;
+
+                const legendLabels = ["1", "2–5", "6–9", "10–15", "16–24", "25–49", "50+"];
 
                 maroonColors.forEach((color, i) => {
-                    // Add legend color boxes
                     legend.append("rect")
                         .attr("x", i * rectWidth)
                         .attr("y", 0)
@@ -104,16 +114,14 @@
                         .attr("height", rectHeight)
                         .attr("fill", color);
 
-                    // Add text labels below each rectangle
                     legend.append("text")
                         .attr("x", i * rectWidth + rectWidth / 2)
                         .attr("y", rectHeight + 15)
                         .attr("text-anchor", "middle")
                         .attr("font-size", "12px")
-                        .text(thresholds[i] ? `${thresholds[i]}+` : "<2");
+                        .text(legendLabels[i]);
                 });
 
-                // Add a legend title
                 legend.append("text")
                     .attr("x", 0)
                     .attr("y", -10)
