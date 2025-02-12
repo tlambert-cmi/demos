@@ -84,11 +84,30 @@
                         const countyData = dataByFIPS[d.id];
                         if (countyData) {
                             tooltip.transition().duration(200).style("opacity", 1);
-                            tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`)
-                                .style("left", (event.pageX + 10) + "px")
-                                .style("top", (event.pageY - 30) + "px");
+                            tooltip.html(`${countyData.county}<br>Partner Teachers: ${countyData.value}`);
+        
+                    // Get the current tooltip width (if it hasn't rendered yet, it might be 0;
+                    // you may need to set a min-width or measure after setting content)
+                        const tooltipWidth = tooltip.node().getBoundingClientRect().width;
+                        const offset = 10; // space between the cursor and the tooltip
+        
+                    // Check if the cursor is on the left or right half of the viewport.
+                    // You can also use the container's width if you prefer.
+                        let tooltipLeft;
+                        if (event.pageX < window.innerWidth / 2) {
+                            // Cursor is on the left half: place tooltip to the right of the cursor.
+                            tooltipLeft = event.pageX + offset;
+                        } else {
+                            // Cursor is on the right half: place tooltip to the left of the cursor.
+                            tooltipLeft = event.pageX - tooltipWidth - offset;
                         }
-                    })
+        
+                    tooltip
+                        .style("left", tooltipLeft + "px")
+                        .style("top", (event.pageY - 30) + "px");
+                    }
+                })
+
                     .on("mouseout", () => tooltip.transition().duration(200).style("opacity", 0));
 
                 // Add state borders
